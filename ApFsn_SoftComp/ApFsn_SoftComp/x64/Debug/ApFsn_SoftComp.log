@@ -1,3 +1,4 @@
-﻿  main.cpp
-C:\i1968\work\uccScrumTraining\ApFsn_SWC_Rep\ApFsn_SoftComp\main.cpp(17,1): warning C4326: 'main' の戻り値の型には、'int' を使用してください。'void' は使用できません
+﻿  ApFsn_SoftComp.cpp
+  main.cpp
+  コードを生成中...
   ApFsn_SoftComp.vcxproj -> C:\i1968\work\uccScrumTraining\ApFsn_SWC_Rep\ApFsn_SoftComp\x64\Debug\ApFsn_SoftComp.exe
