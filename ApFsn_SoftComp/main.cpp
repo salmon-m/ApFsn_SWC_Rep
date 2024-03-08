@@ -1,13 +1,19 @@
 #include "typeDifference.h"
 
-#define ON ((U1)0)
-#define OFF ((U1)1)
+#define ON ((U1)1)
+#define OFF ((U1)0)
 
 static U1 u1s_main_CnInitial = ON;
-static U1 u1s_main_InCnt = 0;
-static U1 u1s_main_Cn4Cycle = OFF;
+static U1 u1s_main_InCnt;
+static U1 u1s_main_Cn4Cycle;
+
+/* unitTest—p */
+static U1 u1s_main_Result = (U1)0;
+
 
 void vdg_main_init() {
+	u1s_main_InCnt = (U1)0;
+	u1s_main_Cn4Cycle = OFF;
 	return;
 }
 
