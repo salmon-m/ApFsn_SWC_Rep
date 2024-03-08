@@ -1,8 +1,8 @@
 #include "pch.h"
-#include "main.h"
+#include "ApFsn_mainComp.h"
 #include "main.cpp"
 
-TEST(TestCaseName, TestName) {
-  EXPECT_EQ(6, migita_shobon(3));
-  EXPECT_TRUE(true);
+TEST(TestCaseMain, TestMain) {
+	EXPECT_EQ(1, u1s_main_CnInitial);
+	EXPECT_TRUE(false);
 }
