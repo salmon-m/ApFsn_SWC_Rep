@@ -43,3 +43,22 @@ TEST(TestCaseMainInit, TestMainInit3) {
 	EXPECT_EQ(1, u1s_main_OutLyrResult);
 	EXPECT_TRUE(true);
 }
+
+//vdg_main_4cycle()のユニットテスト
+TEST(TestCaseMain4cycle, TestMain4cycle1) {
+	vdg_main_4cycle();
+	EXPECT_EQ(2, u1s_main_InLyrResult);
+	EXPECT_TRUE(true);
+}
+
+TEST(TestCaseMain4cycle, TestMain4cycle2) {
+	vdg_main_4cycle();
+	EXPECT_EQ(2, u1s_main_PrcResult);
+	EXPECT_TRUE(true);
+}
+
+TEST(TestCaseMain4cycle, TestMain4cycle3) {
+	vdg_main_4cycle();
+	EXPECT_EQ(2, u1s_main_OutLyrResult);
+	EXPECT_TRUE(true);
+}
