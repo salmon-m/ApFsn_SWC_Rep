@@ -2,11 +2,15 @@
 //
 
 #include <iostream>
-#include "main.h"
+#include "ApFsn_mainComp.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
+	while (0)
+	{
+		main_schedule();
+	}
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
