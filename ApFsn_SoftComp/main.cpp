@@ -7,7 +7,7 @@ static U1 u1s_main_CnInitial = ON;
 static U1 u1s_main_InCnt;
 static U1 u1s_main_Cn4Cycle;
 
-/* ここからunitTest用 */
+/* ここからUnitTest用 */
 static U1 u1s_main_InLyrResult = (U1)0;
 static U1 u1s_main_PrcResult = (U1)0;
 static U1 u1s_main_OutLyrResult = (U1)0;
@@ -36,7 +36,7 @@ void vdg_OutLyr_GlobalUpdate() {
 	u1s_main_OutLyrResult = 2;
 }
 
-/* ここまでunitTest用 */
+/* ここまでUnitTest用 */
 
 
 void vdg_main_init() {
@@ -51,6 +51,9 @@ void vdg_main_init() {
 }
 
 void vdg_main_4cycle() {
+	vdg_InLyr_GlobalCapture();
+	vdg_Prc_GridUpdate();
+	vdg_OutLyr_GlobalUpdate();
 	return;
 }
 
