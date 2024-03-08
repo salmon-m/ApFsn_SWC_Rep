@@ -6,56 +6,24 @@
 static U1 u1s_main_CnInitial = ON;
 static U1 u1s_main_InCnt;
 static U1 u1s_main_Cn4Cycle;
-
-/* ここからUnitTest用 */
+/* ここからUnitTest用の変数宣言 */
 static U1 u1s_main_InLyrResult = (U1)0;
 static U1 u1s_main_PrcResult = (U1)0;
 static U1 u1s_main_OutLyrResult = (U1)0;
-
-//InLyr処理
-void vdg_InLyr_init() {
-	u1s_main_InLyrResult = 1;
-}
-void vdg_InLyr_GlobalCapture() {
-	u1s_main_InLyrResult = 2;
-}
-
-//Prc処理
-void vdg_Prc_init() {
-	u1s_main_PrcResult = 1;
-}
-void vdg_Prc_GridUpdate() {
-	u1s_main_PrcResult = 2;
-}
-
-//OutLyr処理
-void vdg_OutLyr_init() {
-	u1s_main_OutLyrResult = 1;
-}
-void vdg_OutLyr_GlobalUpdate() {
-	u1s_main_OutLyrResult = 2;
-}
-
 /* ここまでUnitTest用 */
 
+//プロトタイプ宣言
+void vdg_main_init(void);
+void vdg_main_4cycle(void);
+/* ここからUnitTest用のプロトタイプ宣言 */
+void vdg_InLyr_init(void);
+void vdg_Prc_init(void);
+void vdg_OutLyr_init(void);
+void vdg_InLyr_GlobalCapture(void);
+void vdg_Prc_GridUpdate(void);
+void vdg_OutLyr_GlobalUpdate(void);
+/* ここまでUnitTest用 */
 
-void vdg_main_init() {
-	u1s_main_InCnt = (U1)0;
-	u1s_main_Cn4Cycle = OFF;
-
-	vdg_InLyr_init();
-	vdg_Prc_init();
-	vdg_OutLyr_init();
-
-	return;
-}
-
-void vdg_main_4cycle() {
-	vdg_InLyr_GlobalCapture();
-	vdg_Prc_GridUpdate();
-	vdg_OutLyr_GlobalUpdate();
-	return;
-}
 
 void main_schedule(void)
 {
@@ -91,3 +59,48 @@ void main_schedule(void)
 	}
 	return;
 }
+
+// コンポの初期化
+void vdg_main_init(void) {
+	u1s_main_InCnt = (U1)0;
+	u1s_main_Cn4Cycle = OFF;
+
+	vdg_InLyr_init();
+	vdg_Prc_init();
+	vdg_OutLyr_init();
+
+	return;
+}
+
+//定周期で処理を実行
+void vdg_main_4cycle(void) {
+	vdg_InLyr_GlobalCapture();
+	vdg_Prc_GridUpdate();
+	vdg_OutLyr_GlobalUpdate();
+	return;
+}
+
+/* ここからUnitTest用 */
+//初期化処理
+void vdg_InLyr_init(void) {
+	u1s_main_InLyrResult = 1;
+}
+void vdg_Prc_init(void) {
+	u1s_main_PrcResult = 1;
+}
+void vdg_OutLyr_init(void) {
+	u1s_main_OutLyrResult = 1;
+}
+
+//定周期処理
+void vdg_InLyr_GlobalCapture(void) {
+	u1s_main_InLyrResult = 2;
+}
+void vdg_Prc_GridUpdate(void) {
+	u1s_main_PrcResult = 2;
+}
+void vdg_OutLyr_GlobalUpdate(void) {
+	u1s_main_OutLyrResult = 2;
+}
+/* ここまでUnitTest用 */
+
