@@ -7,15 +7,7 @@
       "RelativeMoniker": "D:0:0:{84242C42-605C-4418-93BB-B6EFB448CD2E}|ApFsn_SoftComp.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{84242C42-605C-4418-93BB-B6EFB448CD2E}|ApFsn_SoftComp.vcxproj|C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp\\ApFsn_SoftComp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{84242C42-605C-4418-93BB-B6EFB448CD2E}|ApFsn_SoftComp.vcxproj|solutionrelative:ApFsn_SoftComp.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7BEF7F1C-5004-4DF2-B4F3-CABE805C642F}|..\\ApFsn_SoftComp_unittest\\ApFsn_SoftComp_unittest.vcxproj|C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp_unittest\\main_unittest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{84242C42-605C-4418-93BB-B6EFB448CD2E}|ApFsn_SoftComp.vcxproj|C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp\\ApFsn_mainComp.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{84242C42-605C-4418-93BB-B6EFB448CD2E}|ApFsn_SoftComp.vcxproj|solutionrelative:ApFsn_mainComp.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,47 +17,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ApFsn_mainComp.h",
-              "DocumentMoniker": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp\\ApFsn_mainComp.h",
-              "RelativeDocumentMoniker": "ApFsn_mainComp.h",
-              "ToolTip": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp\\ApFsn_mainComp.h",
-              "RelativeToolTip": "ApFsn_mainComp.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-07T07:59:47.417Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApFsn_SoftComp.cpp",
-              "DocumentMoniker": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp\\ApFsn_SoftComp.cpp",
-              "RelativeDocumentMoniker": "ApFsn_SoftComp.cpp",
-              "ToolTip": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp\\ApFsn_SoftComp.cpp",
-              "RelativeToolTip": "ApFsn_SoftComp.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-07T07:58:33.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "main_unittest.cpp",
-              "DocumentMoniker": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
-              "RelativeDocumentMoniker": "..\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
-              "ToolTip": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
-              "RelativeToolTip": "..\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-07T06:53:32.525Z"
             },
             {
               "$type": "Document",
@@ -75,9 +31,28 @@
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAADAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-07T06:52:35.694Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main_unittest.cpp",
+              "DocumentMoniker": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
+              "RelativeDocumentMoniker": "..\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
+              "ToolTip": "C:\\i1968\\work\\uccScrumTraining\\ApFsn_SWC_Rep\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
+              "RelativeToolTip": "..\\ApFsn_SoftComp_unittest\\main_unittest.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-07T06:53:32.525Z",
               "EditorCaption": ""
             }
           ]
