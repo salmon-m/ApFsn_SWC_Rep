@@ -1,4 +1,4 @@
-[2024-03-08 11:06:20] [info] Start Program:
+[2024-03-08 14:18:24] [info] Start Program:
 Path:"ApFsn_SoftComp_unittest.exe"
 Arguments:
 Working directory: not set.
@@ -14,18 +14,19 @@ Input coverage:
 Unified diff: 
 Excluded line regular expressions: 
 Substitute pdb source paths: 
-[2024-03-08 11:06:20] [info] Module: C:\i1968\work\uccScrumTraining\ApFsn_SWC_Rep\ApFsn_SoftComp\x64\Debug\ApFsn_SoftComp_unittest.exe is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\ntdll.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\kernel32.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\KernelBase.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\vcruntime140_1d.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\msvcp140d.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\vcruntime140d.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\ucrtbased.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\kernel.appcore.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\msvcrt.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:20] [info] Module: C:\Windows\System32\rpcrt4.dll is selected because it matches selected pattern: *
-[2024-03-08 11:06:21] [info] ----------------------------------------------------
-[2024-03-08 11:06:21] [info] Coverage generated in Folder C:\i1968\work\uccScrumTraining\ApFsn_SWC_Rep\ApFsn_SoftComp\x64\Debug\CoverageReport-2024-03-08-11h06m20s
-[2024-03-08 11:06:21] [info] ----------------------------------------------------
-[2024-03-08 11:06:21] [info] The code coverage report is not what you expect? See the FAQ https://github.com/OpenCppCoverage/OpenCppCoverage/wiki/FAQ.
+[2024-03-08 14:18:24] [info] Module: C:\i1968\work\uccScrumTraining\ApFsn_SWC_Rep\ApFsn_SoftComp\x64\Debug\ApFsn_SoftComp_unittest.exe is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\ntdll.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\kernel32.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\KernelBase.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\vcruntime140_1d.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\vcruntime140d.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\ucrtbased.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\msvcp140d.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\kernel.appcore.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\msvcrt.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] Module: C:\Windows\System32\rpcrt4.dll is selected because it matches selected pattern: *
+[2024-03-08 14:18:24] [info] ----------------------------------------------------
+[2024-03-08 14:18:24] [info] Coverage generated in Folder C:\i1968\work\uccScrumTraining\ApFsn_SWC_Rep\ApFsn_SoftComp\x64\Debug\CoverageReport-2024-03-08-14h18m24s
+[2024-03-08 14:18:24] [info] ----------------------------------------------------
+[2024-03-08 14:18:24] [info] The code coverage report is not what you expect? See the FAQ https://github.com/OpenCppCoverage/OpenCppCoverage/wiki/FAQ.
+[2024-03-08 14:18:24] [error] Your program stop with error code: 1
