@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="main.h" />
     <ClInclude Include="typeDifference.h" />
+    <ClInclude Include="ApFsn_SoftComp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

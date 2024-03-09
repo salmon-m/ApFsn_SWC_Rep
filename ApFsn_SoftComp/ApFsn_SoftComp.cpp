@@ -2,14 +2,20 @@
 //
 
 #include <iostream>
+#include "ApFsn_SoftComp.h"
 #include "main.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::cout << "Let's Try ApFsn Training!\n";
+
+	u1g_ApFsn_IG = ON;
+
 	while (0)
 	{
 		main_schedule();
+
+		u1g_ApFsn_IG = OFF;
 	}
 }
 
