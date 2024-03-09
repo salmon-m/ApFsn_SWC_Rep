@@ -11,7 +11,7 @@ int main()
 
 	u1g_ApFsn_IG = ON;
 
-	while (0)
+	while (1)
 	{
 		main_schedule();
 
