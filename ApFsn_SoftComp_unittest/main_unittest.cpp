@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ApFsn_mainComp.h"
+#include "main.h"
 #include "main.cpp"
 
 //main_schedule()のユニットテスト

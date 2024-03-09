@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "ApFsn_mainComp.h"
+#include "main.h"
 
 int main()
 {
