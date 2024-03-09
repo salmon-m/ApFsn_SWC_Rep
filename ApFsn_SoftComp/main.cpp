@@ -41,11 +41,11 @@ void main_schedule(void)
 	{
 		//カウント
 		u1s_main_InCnt++;
-		u1s_main_InCnt %= 4;
 		//カウント数確認
 		if ((u1s_main_InCnt % 4) == 0)
 		{
 			u1s_main_Cn4Cycle = ON;
+			u1s_main_InCnt = (U1)0;
 		}
 		else
 		{
