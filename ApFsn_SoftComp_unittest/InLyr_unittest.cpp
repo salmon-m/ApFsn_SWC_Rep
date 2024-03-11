@@ -4,7 +4,7 @@
 
 //vdg_InLyr_init()のユニットテスト
 TEST(TestCaseInLyrInit, TestMainInLyrInit1) {
-	//
+	//テスト用に値を入力
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)1;
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)2;
 	stg_InLyr_SnrDtctClstr[0].InCrdNum = (U1)1;
