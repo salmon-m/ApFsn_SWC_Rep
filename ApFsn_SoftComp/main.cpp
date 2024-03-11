@@ -1,4 +1,6 @@
 #include "typeDifference.h"
+#include "ApFsn_InLyrComp.h"
+#include "ApFsn_PrcComp.h"
 
 #define ON ((U1)1)
 #define OFF ((U1)0)
@@ -7,8 +9,8 @@ static U1 u1s_main_CnInitial = ON;
 static U1 u1s_main_InCnt;
 static U1 u1s_main_Cn4Cycle;
 /* ここからUnitTest用の変数宣言 */
-static U1 u1s_main_InLyrResult = (U1)0;
-static U1 u1s_main_PrcResult = (U1)0;
+//static U1 u1s_main_InLyrResult = (U1)0;
+//static U1 u1s_main_PrcResult = (U1)0;
 static U1 u1s_main_OutLyrResult = (U1)0;
 /* ここまでUnitTest用 */
 
@@ -16,11 +18,11 @@ static U1 u1s_main_OutLyrResult = (U1)0;
 void vdg_main_init(void);
 void vdg_main_4cycle(void);
 /* ここからUnitTest用のプロトタイプ宣言 */
-void vdg_InLyr_init(void);
-void vdg_Prc_init(void);
+//void vdg_InLyr_init(void);
+//void vdg_Prc_init(void);
 void vdg_OutLyr_init(void);
-void vdg_InLyr_GlobalCapture(void);
-void vdg_Prc_GridUpdate(void);
+//void vdg_InLyr_GlobalCapture(void);
+//void vdg_Prc_GridUpdate(void);
 void vdg_OutLyr_GlobalUpdate(void);
 /* ここまでUnitTest用 */
 
@@ -82,23 +84,29 @@ void vdg_main_4cycle(void) {
 
 /* ここからUnitTest用 */
 //初期化処理
-void vdg_InLyr_init(void) {
-	u1s_main_InLyrResult = 1;
-}
-void vdg_Prc_init(void) {
-	u1s_main_PrcResult = 1;
-}
+/*
+*void vdg_InLyr_init(void) {
+*	u1s_main_InLyrResult = 1;
+*}
+*
+*void vdg_Prc_init(void) {
+*	u1s_main_PrcResult = 1;
+*}
+*/
 void vdg_OutLyr_init(void) {
 	u1s_main_OutLyrResult = 1;
 }
 
 //定周期処理
-void vdg_InLyr_GlobalCapture(void) {
-	u1s_main_InLyrResult = 2;
-}
-void vdg_Prc_GridUpdate(void) {
-	u1s_main_PrcResult = 2;
-}
+/*
+*void vdg_InLyr_GlobalCapture(void) {
+*	u1s_main_InLyrResult = 2;
+*}
+*
+*void vdg_Prc_GridUpdate(void) {
+*	u1s_main_PrcResult = 2;
+*}
+*/
 void vdg_OutLyr_GlobalUpdate(void) {
 	u1s_main_OutLyrResult = 2;
 }
