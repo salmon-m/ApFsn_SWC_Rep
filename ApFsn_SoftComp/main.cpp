@@ -5,9 +5,9 @@
 #define ON ((U1)1)
 #define OFF ((U1)0)
 
-static U1 u1s_main_CnInitial = ON;
-static U1 u1s_main_InCnt;
-static U1 u1s_main_Cn4Cycle;
+static U1 u1s_main_CnInitial = ON;   //初回フラグ
+static U1 u1s_main_InCnt;            //カウント数
+static U1 u1s_main_Cn4Cycle;         //定周期フラグ
 /* ここからUnitTest用の変数宣言 */
 //static U1 u1s_main_InLyrResult = (U1)0;
 //static U1 u1s_main_PrcResult = (U1)0;
