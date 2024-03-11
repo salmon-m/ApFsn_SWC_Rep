@@ -25,3 +25,4 @@ typedef struct
 
 st_csr_clstr stg_csr_dtct_clstr[3];
 st_pvm_clstr stg_pvm_dtct_clstr[4];
+
