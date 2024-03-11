@@ -18,6 +18,19 @@ st_GridMap stg_Prc_ArGridInfo[1000][4000];   //グリッドマップ情報
 //初期化
 void vdg_Prc_init(void) 
 {
+	U2 U2_PrcI_LoopI = (U2)0;
+	U2 U2_PrcI_LoopJ = (U2)0;
+
+	for (U2_PrcI_LoopI = 0; U2_PrcI_LoopI < 1000; U2_PrcI_LoopI++) 
+	{
+		for (U2_PrcI_LoopJ = 0; U2_PrcI_LoopJ < 4000; U2_PrcI_LoopJ++) 
+		{
+			stg_Prc_ArGridInfo[U2_PrcI_LoopI][U2_PrcI_LoopJ].CnSnrDtct = (U1)0;
+			stg_Prc_ArGridInfo[U2_PrcI_LoopI][U2_PrcI_LoopJ].CnSodDtct = (U1)0;
+			stg_Prc_ArGridInfo[U2_PrcI_LoopI][U2_PrcI_LoopJ].InOcpy = (U1)0;
+			stg_Prc_ArGridInfo[U2_PrcI_LoopI][U2_PrcI_LoopJ].CnObjSet = (U1)0;
+		}
+	}
 
 	return;
 }
