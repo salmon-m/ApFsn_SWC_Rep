@@ -37,6 +37,7 @@ void vdg_InLyr_init(void)
 	S1 S1_InLyrI_LoopI = (S1)0;
 	S1 S1_InLyrI_LoopJ = (S1)0;
 
+	//ソナーセンサ検知クラスタ用変数の初期化
 	for (S1_InLyrI_LoopI = 0; S1_InLyrI_LoopI < 3; S1_InLyrI_LoopI++) 
 	{
 		for (S1_InLyrI_LoopJ = 0; S1_InLyrI_LoopJ < 5; S1_InLyrI_LoopJ++) {
@@ -47,6 +48,7 @@ void vdg_InLyr_init(void)
 		stg_InLyr_SnrDtctClstr[S1_InLyrI_LoopI].EmClstrState = (U1)0;
 	}
 
+	//PVM検知クラスタ用変数の初期化
 	for (S1_InLyrI_LoopI = 0; S1_InLyrI_LoopI < 4; S1_InLyrI_LoopI++)
 	{
 		for (S1_InLyrI_LoopJ = 0; S1_InLyrI_LoopJ < 6; S1_InLyrI_LoopJ++) {
@@ -66,7 +68,7 @@ void vdg_InLyr_GlobalCapture(void)
 	S1 S1_InLyrGC_LoopI = (S1)0;
 	S1 S1_InLyrGC_LoopJ = (S1)0;
 
-
+	//ソナーセンサ検知クラスタ取り込み
 	for (S1_InLyrGC_LoopI = 0; S1_InLyrGC_LoopI < 3; S1_InLyrGC_LoopI++)
 	{
 		for (S1_InLyrGC_LoopJ = 0; S1_InLyrGC_LoopJ < 5; S1_InLyrGC_LoopJ++) {
@@ -77,6 +79,7 @@ void vdg_InLyr_GlobalCapture(void)
 		stg_InLyr_SnrDtctClstr[S1_InLyrGC_LoopI].EmClstrState = stg_csr_dtct_clstr[S1_InLyrGC_LoopI].EmClstrState;
 	}
 
+	//PVM検知クラスタ取り込み
 	for (S1_InLyrGC_LoopI = 0; S1_InLyrGC_LoopI < 4; S1_InLyrGC_LoopI++)
 	{
 		for (S1_InLyrGC_LoopJ = 0; S1_InLyrGC_LoopJ < 6; S1_InLyrGC_LoopJ++) {

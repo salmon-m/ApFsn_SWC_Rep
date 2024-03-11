@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "ApFsn_mainComp.h"
+#include "ApFsn_InLyrComp.h"
 #include "main.cpp"
+#include "InLyr.cpp"
 
 //main_schedule()のユニットテスト
 TEST(TestCaseMainSchedule, TestMainSchedule1) {
@@ -24,16 +26,24 @@ TEST(TestCaseMainSchedule, TestMainSchedule3) {
 
 //main_init()のユニットテスト
 TEST(TestCaseMainInit, TestMainInit) {
+	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = 1;
+	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = 1;
+
 	vdg_main_init();
-	EXPECT_EQ(1, u1s_main_InLyrResult);
-	EXPECT_EQ(1, u1s_main_PrcResult);
-	EXPECT_EQ(1, u1s_main_OutLyrResult);
+
+	EXPECT_EQ(0, stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X);
+	EXPECT_EQ(0, stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y);
 }
 
 //vdg_main_4cycle()のユニットテスト
 TEST(TestCaseMain4cycle, TestMain4cycle1) {
+	stg_csr_dtct_clstr[0].st_dtct_crd[2].In_X = -100;
+	stg_csr_dtct_clstr[0].st_dtct_crd[2].In_Y = 200;
+	stg_csr_dtct_clstr[0].InCrdNum = 3;
+
 	vdg_main_4cycle();
-	EXPECT_EQ(2, u1s_main_InLyrResult);
-	EXPECT_EQ(2, u1s_main_PrcResult);
-	EXPECT_EQ(2, u1s_main_OutLyrResult);
+
+	EXPECT_EQ(-100, stg_InLyr_SnrDtctClstr[0].st_crd[2].In_X);
+	EXPECT_EQ(200, stg_InLyr_SnrDtctClstr[0].st_crd[2].In_Y);
+	EXPECT_EQ(3, stg_InLyr_SnrDtctClstr[0].InCrdNum);
 }
