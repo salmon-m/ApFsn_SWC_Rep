@@ -1,6 +1,6 @@
 #include "typeDifference.h"
-#include "ApFsn_InLyrComp.h"
-#include "ApFsn_PrcComp.h"
+#include "InLyr.h"
+#include "Prc.h"
 
 #define ON ((U1)1)
 #define OFF ((U1)0)

@@ -1,8 +1,10 @@
 #include "pch.h"
-#include "ApFsn_mainComp.h"
-#include "ApFsn_InLyrComp.h"
+#include "main.h"
+#include "InLyr.h"
+#include "Prc.h"
 #include "main.cpp"
 #include "InLyr.cpp"
+#include "Prc.cpp"
 
 //main_schedule()のユニットテスト
 TEST(TestCaseMainSchedule, TestMainSchedule1) {
@@ -28,11 +30,15 @@ TEST(TestCaseMainSchedule, TestMainSchedule3) {
 TEST(TestCaseMainInit, TestMainInit) {
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = 1;
 	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = 1;
+	stg_Prc_ArGridInfo[0][0].CnSnrDtct = 1;
+	stg_Prc_ArGridInfo[0][0].CnSodDtct = 2;
 
 	vdg_main_init();
 
 	EXPECT_EQ(0, stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X);
 	EXPECT_EQ(0, stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[0][0].CnSnrDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[0][0].CnSodDtct);
 }
 
 //vdg_main_4cycle()のユニットテスト

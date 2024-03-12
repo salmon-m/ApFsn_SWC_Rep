@@ -37,5 +37,7 @@ void vdg_Prc_init(void)
 
 void vdg_Prc_GridUpdate(void)
 {
+	//ŒŸ’m“_‚ª‚ ‚Á‚½‚ç
+	
 	return;
 }

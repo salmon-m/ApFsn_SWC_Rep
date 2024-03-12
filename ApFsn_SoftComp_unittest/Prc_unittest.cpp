@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ApFsn_PrcComp.h"
+#include "Prc.h"
 #include "Prc.cpp"
 
 //vdg_Prc_init()のユニットテスト

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ApFsn_InLyrComp.h"
+#include "InLyr.h"
 #include "InLyr.cpp"
 
 //vdg_InLyr_init()のユニットテスト
