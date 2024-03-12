@@ -33,8 +33,8 @@ TEST(TestCasePrcGU, TestPrcGU1) {
 	stg_InLyr_SodDtctClstr[0].EmClstrState = (U1)1;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][1000].CnSnrDtct);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][1000].CnSodDtct);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][1000].InOcpy);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[500][1000].CnSnrDtct);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[500][1000].CnSodDtct);
+	EXPECT_EQ(10, stg_Prc_ArGridInfo[500][1000].InOcpy);
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][1000].CnObjSet);
 }
