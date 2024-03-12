@@ -1,7 +1,7 @@
 #pragma once
 #include "typeDifference.h"
 
-//構造体宣言
+//ApFsn_SoftComp内の構造体定義
 typedef struct
 {
 	S2 In_X;   //X座標
@@ -22,12 +22,6 @@ typedef struct
 	U1 EmClstrState;        //クラスタ状態
 }st_sod_clstr;
 
-
-extern st_snr_clstr stg_InLyr_SnrDtctClstr[3];   //ソナーセンサ検知クラスタ
-extern st_sod_clstr stg_InLyr_SodDtctClstr[4];   //PVM検知クラスタ
-
-
-
 typedef struct
 {
 	U1 CnSnrDtct;   //ソナー検知の有無
@@ -36,5 +30,20 @@ typedef struct
 	U1 CnObjSet;    //物体確定フラグ
 }st_GridMap;
 
-extern st_GridMap stg_Prc_ArGridInfo[1000][4000];   //グリッドマップ情報
 
+//ApFsn_SoftCompの外部IFの構造体定義（ダミー定義だが、本ファイルに設定）
+typedef struct
+{
+	st_crd st_dtct_crd[5];   //最大座標数
+	U1 InCrdNum;             //検知座標数
+	U1 EmClstrState;         //クラスタ状態
+	U1 Dummy[2];             //ダミー定義（アライメント用）
+}st_csr_clstr;
+
+typedef struct
+{
+	st_crd st_dtct_crd[6];  //最大座標数
+	U1 InCrdNum;            //検知座標数
+	U1 EmClstrState;        //クラスタ状態
+	U1 Dummy[2];            //ダミー定義（アライメント用）
+}st_pvm_clstr;

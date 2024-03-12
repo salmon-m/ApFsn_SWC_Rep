@@ -3,8 +3,6 @@
 #include "InLyr.h"
 #include "Prc.h"
 #include "main.cpp"
-#include "InLyr.cpp"
-#include "Prc.cpp"
 
 //main_schedule()のユニットテスト
 TEST(TestCaseMainSchedule, Test_init) {

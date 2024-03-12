@@ -1,4 +1,5 @@
 #include "typeDifference.h"
+#include "structureDeclaration.h"
 #include "InLyr.h"
 #include "Prc.h"
 
@@ -8,6 +9,8 @@
 //main()をリンカー入力するとUnittest.exeがmain()を呼んでしまうため
 //やむえず main.cpp に外部入力を定義
 U1 u1g_ApFsn_IG;
+st_csr_clstr stg_csr_dtct_clstr[3];
+st_pvm_clstr stg_pvm_dtct_clstr[4];
 //Dummy定義
 
 

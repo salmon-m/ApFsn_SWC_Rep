@@ -1,5 +1,6 @@
 #include "typeDifference.h"
 #include "structureDeclaration.h"
+#include "InLyr.h"
 
 //プロトタイプ宣言
 void vdg_Prc_init(void);
