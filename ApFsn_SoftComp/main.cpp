@@ -2,10 +2,15 @@
 #include "InLyr.h"
 #include "Prc.h"
 
-#define ON ((U1)1)
-#define OFF ((U1)0)
+//Dummy定義
+//本当は main.cppの外部入力になるが、
+//ApFsn_SoftComp.cppではmain()定義しており、
+//main()をリンカー入力するとUnittest.exeがmain()を呼んでしまうため
+//やむえず main.cpp に外部入力を定義
+U1 u1g_ApFsn_IG;
+//Dummy定義
 
-static U1 u1s_main_CnInitial = ON;   //初回フラグ
+
 static U1 u1s_main_InCnt;            //カウント数
 static U1 u1s_main_Cn4Cycle;         //定周期フラグ
 /* ここからUnitTest用の変数宣言 */
@@ -30,20 +35,19 @@ void vdg_OutLyr_GlobalUpdate(void);
 void main_schedule(void)
 {
 	//初回フラグ
-	if (u1s_main_CnInitial == ON)
+	if (u1g_ApFsn_IG == ON)
 		{
 			vdg_main_init();
-			u1s_main_CnInitial = OFF;
 		}
 	else
 	{
 		//カウント
 		u1s_main_InCnt++;
-		u1s_main_InCnt %= 4;
 		//カウント数確認
 		if ((u1s_main_InCnt % 4) == 0)
 		{
 			u1s_main_Cn4Cycle = ON;
+			u1s_main_InCnt = (U1)0;
 		}
 		else
 		{
@@ -64,9 +68,11 @@ void main_schedule(void)
 
 // コンポの初期化
 void vdg_main_init(void) {
+	//自モジュールのRAM初期化
 	u1s_main_InCnt = (U1)0;
 	u1s_main_Cn4Cycle = OFF;
 
+	//他モジュールの初期化関数コール
 	vdg_InLyr_init();
 	vdg_Prc_init();
 	vdg_OutLyr_init();
