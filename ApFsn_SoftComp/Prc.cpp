@@ -5,15 +5,6 @@
 void vdg_Prc_init(void);
 void vdg_Prc_GridUpdate(void);
 
-//構造体の宣言
-typedef struct
-{
-	U1 CnSnrDtct;   //ソナー検知の有無
-	U1 CnSodDtct;   //PVM検知の有無
-	U1 InOcpy;      //投票数
-	U1 CnObjSet;    //物体確定フラグ
-}st_GridMap;
-
 st_GridMap stg_Prc_ArGridInfo[1000][4000];   //グリッドマップ情報
 
 //初期化
@@ -44,7 +35,7 @@ void vdg_Prc_GridUpdate(void)
 	S2 S2_PrcGU_Y = (S2)0;
 
 	//ソナー
-	for (U2_PrcGU_LoopI = 0; U2_PrcGU_LoopI < stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].InCrdNum; U2_PrcGU_LoopI++)
+	for (U2_PrcGU_LoopI = 0; (U2_PrcGU_LoopI < 3) && (stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].InCrdNum != 0); U2_PrcGU_LoopI++)
 	{
 		for (U2_PrcGU_LoopJ = 0; U2_PrcGU_LoopJ < stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].InCrdNum; U2_PrcGU_LoopJ++) 
 		{
@@ -56,7 +47,7 @@ void vdg_Prc_GridUpdate(void)
 	}
 
 	//PVM
-	for (U2_PrcGU_LoopI = 0; U2_PrcGU_LoopI < stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].InCrdNum; U2_PrcGU_LoopI++)
+	for (U2_PrcGU_LoopI = 0; (U2_PrcGU_LoopI < 4) && (stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].InCrdNum != 0); U2_PrcGU_LoopI++)
 	{
 		for (U2_PrcGU_LoopJ = 0; U2_PrcGU_LoopJ < stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].InCrdNum; U2_PrcGU_LoopJ++)
 		{
