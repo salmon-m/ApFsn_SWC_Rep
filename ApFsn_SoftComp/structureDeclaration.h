@@ -26,3 +26,15 @@ typedef struct
 extern st_snr_clstr stg_InLyr_SnrDtctClstr[3];   //ソナーセンサ検知クラスタ
 extern st_sod_clstr stg_InLyr_SodDtctClstr[4];   //PVM検知クラスタ
 
+
+
+typedef struct
+{
+	U1 CnSnrDtct;   //ソナー検知の有無
+	U1 CnSodDtct;   //PVM検知の有無
+	U1 InOcpy;      //投票数
+	U1 CnObjSet;    //物体確定フラグ
+}st_GridMap;
+
+extern st_GridMap stg_Prc_ArGridInfo[1000][4000];   //グリッドマップ情報
+
