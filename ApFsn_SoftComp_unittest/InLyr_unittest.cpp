@@ -4,7 +4,7 @@
 #include "InLyr.cpp"
 
 //vdg_InLyr_init()のユニットテスト
-TEST(TestCaseInLyrInit, TestMainInLyrInit1) {
+TEST(TestCaseInLyrInit, TestInLyrInit1) {
 	//ソナーセンサ用
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)1;
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)2;
@@ -29,7 +29,7 @@ TEST(TestCaseInLyrInit, TestMainInLyrInit1) {
 }
 
 //vdg_InLyr_GlobalCapture()のユニットテスト
-TEST(TestCaseInLyrGC, TestMainInLyrGC1) {
+TEST(TestCaseInLyrGC, TestInLyrGC1) {
 	//ソナーセンサ
 	stg_csr_dtct_clstr[0].st_dtct_crd[2].In_X = -100;
 	stg_csr_dtct_clstr[0].st_dtct_crd[2].In_Y = 200;
