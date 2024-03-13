@@ -128,11 +128,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ApFsn_SoftComp.cpp" />
+    <ClCompile Include="InLyr.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Prc.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ApFsn_mainComp.h" />
+    <ClInclude Include="ExternalData.h" />
+    <ClInclude Include="InLyr.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="Prc.h" />
+    <ClInclude Include="structureDeclaration.h" />
     <ClInclude Include="typeDifference.h" />
+    <ClInclude Include="ApFsn_SoftComp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

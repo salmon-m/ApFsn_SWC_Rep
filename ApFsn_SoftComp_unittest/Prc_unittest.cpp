@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "InLyr.cpp"
+#include "InLyr.h"
 #include "Prc.h"
 #include "Prc.cpp"
 

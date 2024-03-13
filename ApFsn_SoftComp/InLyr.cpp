@@ -1,5 +1,6 @@
 #include "typeDifference.h"
-#include "ExternalData.h"
+#include "ExternalData.h"          //外部入力DummyIF用
+#include "main.h"                  //外部入力DummyIF用
 #include "structureDeclaration.h"
 
 //プロトタイプ宣言
