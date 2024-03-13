@@ -51,6 +51,7 @@ TEST(TestCaseMain4cycle, TestMain4cycle1) {
 	stg_csr_dtct_clstr[0].st_dtct_crd[0].In_X = -100;
 	stg_csr_dtct_clstr[0].st_dtct_crd[0].In_Y = 200;
 	stg_csr_dtct_clstr[0].InCrdNum = 1;
+	stg_csr_dtct_clstr[0].EmClstrState = 1;
 
 	vdg_main_4cycle();
 

@@ -44,9 +44,6 @@
     <ClInclude Include="Prc.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="ExternalData.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="structureDeclaration.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>

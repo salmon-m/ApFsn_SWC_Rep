@@ -40,10 +40,12 @@ void vdg_Prc_GridUpdate(void)
 	{
 		for (U2_PrcGU_LoopJ = 0; U2_PrcGU_LoopJ < stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].InCrdNum; U2_PrcGU_LoopJ++) 
 		{
-			S2_PrcGU_X = stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_X + 1000;
-			S2_PrcGU_Y = stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_Y + 500;
-			stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].CnSnrDtct = 1;
-			stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
+			if (stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].EmClstrState == 1) {
+				S2_PrcGU_X = stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_X + 1000;
+				S2_PrcGU_Y = stg_InLyr_SnrDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_Y + 500;
+				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].CnSnrDtct = 1;
+				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
+			}
 		}
 	}
 
@@ -52,10 +54,12 @@ void vdg_Prc_GridUpdate(void)
 	{
 		for (U2_PrcGU_LoopJ = 0; U2_PrcGU_LoopJ < stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].InCrdNum; U2_PrcGU_LoopJ++)
 		{
-			S2_PrcGU_X = stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_X + 1000;
-			S2_PrcGU_Y = stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_Y + 500;
-			stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].CnSodDtct = 1;
-			stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
+			if (stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].EmClstrState == 1) {
+				S2_PrcGU_X = stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_X + 1000;
+				S2_PrcGU_Y = stg_InLyr_SodDtctClstr[U2_PrcGU_LoopI].st_crd[U2_PrcGU_LoopJ].In_Y + 500;
+				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].CnSodDtct = 1;
+				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
+			}
 		}
 	}
 
