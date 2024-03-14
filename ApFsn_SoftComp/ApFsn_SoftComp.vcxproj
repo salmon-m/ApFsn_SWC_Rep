@@ -130,12 +130,14 @@
     <ClCompile Include="ApFsn_SoftComp.cpp" />
     <ClCompile Include="InLyr.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OutLyr.cpp" />
     <ClCompile Include="Prc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ExternalData.h" />
     <ClInclude Include="InLyr.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="OutLyr.h" />
     <ClInclude Include="Prc.h" />
     <ClInclude Include="structureDeclaration.h" />
     <ClInclude Include="typeDifference.h" />
