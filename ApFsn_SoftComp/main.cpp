@@ -2,6 +2,7 @@
 #include "structureDeclaration.h"
 #include "InLyr.h"
 #include "Prc.h"
+#include "OutLyr.h"
 
 //Dummy定義
 //本当は main.cppの外部入力になるが、
@@ -16,23 +17,23 @@ st_pvm_clstr stg_pvm_dtct_clstr[4];
 
 static U1 u1s_main_InCnt;            //カウント数
 static U1 u1s_main_Cn4Cycle;         //定周期フラグ
-/* ここからUnitTest用の変数宣言 */
-//static U1 u1s_main_InLyrResult = (U1)0;
-//static U1 u1s_main_PrcResult = (U1)0;
-static U1 u1s_main_OutLyrResult = (U1)0;
-/* ここまでUnitTest用 */
+/* ここからUnitTest用の変数宣言
+*static U1 u1s_main_InLyrResult = (U1)0;
+*static U1 u1s_main_PrcResult = (U1)0;
+*static U1 u1s_main_OutLyrResult = (U1)0;
+* ここまでUnitTest用 */
 
 //プロトタイプ宣言
 void vdg_main_init(void);
 void vdg_main_4cycle(void);
-/* ここからUnitTest用のプロトタイプ宣言 */
-//void vdg_InLyr_init(void);
-//void vdg_Prc_init(void);
-void vdg_OutLyr_init(void);
-//void vdg_InLyr_GlobalCapture(void);
-//void vdg_Prc_GridUpdate(void);
-void vdg_OutLyr_GlobalUpdate(void);
-/* ここまでUnitTest用 */
+/* ここからUnitTest用のプロトタイプ宣言
+*void vdg_InLyr_init(void);
+*void vdg_Prc_init(void);
+*void vdg_OutLyr_init(void);
+*void vdg_InLyr_GlobalCapture(void);
+*void vdg_Prc_GridUpdate(void);
+*void vdg_OutLyr_GlobalUpdate(void);
+* ここまでUnitTest用 */
 
 
 void main_schedule(void)
@@ -101,13 +102,13 @@ void vdg_main_4cycle(void) {
 *void vdg_Prc_init(void) {
 *	u1s_main_PrcResult = 1;
 *}
-*/
-void vdg_OutLyr_init(void) {
-	u1s_main_OutLyrResult = 1;
-}
-
-//定周期処理
-/*
+*
+*void vdg_OutLyr_init(void) {
+*	u1s_main_OutLyrResult = 1;
+*}
+*
+*定周期処理
+*
 *void vdg_InLyr_GlobalCapture(void) {
 *	u1s_main_InLyrResult = 2;
 *}
@@ -115,9 +116,9 @@ void vdg_OutLyr_init(void) {
 *void vdg_Prc_GridUpdate(void) {
 *	u1s_main_PrcResult = 2;
 *}
-*/
-void vdg_OutLyr_GlobalUpdate(void) {
-	u1s_main_OutLyrResult = 2;
-}
-/* ここまでUnitTest用 */
+*
+*void vdg_OutLyr_GlobalUpdate(void) {
+*	u1s_main_OutLyrResult = 2;
+*}
+* ここまでUnitTest用 */
 
