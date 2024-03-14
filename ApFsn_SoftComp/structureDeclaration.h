@@ -30,6 +30,10 @@ typedef struct
 	U1 CnObjSet;    //物体確定フラグ
 }st_GridMap;
 
+typedef struct {
+	U1 CnObjSet;    //物体確定フラグ
+	U1 Dummy[3];    //ダミー定義（アライメント用）
+}st_GridMap_Out;
 
 //ApFsn_SoftCompの外部IFの構造体定義（ダミー定義だが、本ファイルに設定）
 typedef struct
