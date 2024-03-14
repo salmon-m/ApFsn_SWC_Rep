@@ -133,6 +133,7 @@
     <ClCompile Include="Prc.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ExternalData.h" />
     <ClInclude Include="InLyr.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Prc.h" />
