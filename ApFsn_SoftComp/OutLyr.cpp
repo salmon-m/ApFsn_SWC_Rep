@@ -35,7 +35,7 @@ void vdg_OutLyr_GlobalUpdate(void)
 	{
 		for (U2_OutLyrGU_LoopJ = 0; U2_OutLyrGU_LoopJ < 4000; U2_OutLyrGU_LoopJ++)
 		{
-			stg_Prc_ArGridInfo[U2_OutLyrGU_LoopI][U2_OutLyrGU_LoopJ].CnObjSet = stg_OutLyr_ArGridInfo[U2_OutLyrGU_LoopI][U2_OutLyrGU_LoopJ].CnObjSet;
+			stg_OutLyr_ArGridInfo[U2_OutLyrGU_LoopI][U2_OutLyrGU_LoopJ].CnObjSet = stg_Prc_ArGridInfo[U2_OutLyrGU_LoopI][U2_OutLyrGU_LoopJ].CnObjSet;
 		}
 	}
 
