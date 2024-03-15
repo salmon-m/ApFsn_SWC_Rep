@@ -4,7 +4,7 @@
 #include "OutLyr.cpp"
 
 //vdg_InLyr_init()のユニットテスト
-TEST(TestCaseOutLyrInit, TestOutLyrInit) {
+TEST(TestCaseOutLyrInit, Test_OutLyrInit) {
 
 	stg_OutLyr_ArGridInfo[0][0].CnObjSet = 1;
 	stg_OutLyr_ArGridInfo[900][3500] .CnObjSet= 1;

@@ -5,7 +5,7 @@
 #include "main.cpp"
 
 //main_schedule()のユニットテスト
-TEST(TestCaseMainSchedule, Test_init) {
+TEST(TestCaseMainSchedule, Test_firstCycle) {
 	u1g_ApFsn_IG = ON;
 	main_schedule();
 	EXPECT_EQ(0, u1s_main_InCnt);
@@ -32,11 +32,12 @@ TEST(TestCaseMainSchedule, Test_4cycle) {
 
 
 //main_init()のユニットテスト
-TEST(TestCaseMainInit, TestMainInit) {
+TEST(TestCaseMainInit, Test_MainInit) {
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = 1;
 	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = 1;
 	stg_Prc_ArGridInfo[0][0].CnSnrDtct = 1;
 	stg_Prc_ArGridInfo[0][0].CnSodDtct = 2;
+	stg_OutLyr_ArGridInfo[0][0].CnObjSet = 1;
 
 	vdg_main_init();
 
@@ -44,14 +45,16 @@ TEST(TestCaseMainInit, TestMainInit) {
 	EXPECT_EQ(0, stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y);
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[0][0].CnSnrDtct);
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[0][0].CnSodDtct);
+	EXPECT_EQ(0, stg_OutLyr_ArGridInfo[0][0].CnObjSet);
 }
 
 //vdg_main_4cycle()のユニットテスト
-TEST(TestCaseMain4cycle, TestMain4cycle1) {
+TEST(TestCaseMain4cycle, Test_Main4cycle1) {
 	stg_csr_dtct_clstr[0].st_dtct_crd[0].In_X = -100;
 	stg_csr_dtct_clstr[0].st_dtct_crd[0].In_Y = 200;
 	stg_csr_dtct_clstr[0].InCrdNum = 1;
 	stg_csr_dtct_clstr[0].EmClstrState = 1;
+	stg_Prc_ArGridInfo[0][0].CnObjSet = 1;
 
 	vdg_main_4cycle();
 
@@ -62,4 +65,5 @@ TEST(TestCaseMain4cycle, TestMain4cycle1) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[700][900].CnSodDtct);
 	EXPECT_EQ(5, stg_Prc_ArGridInfo[700][900].InOcpy);
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[700][900].CnObjSet);
+	EXPECT_EQ(1, stg_OutLyr_ArGridInfo[0][0].CnObjSet);
 }
