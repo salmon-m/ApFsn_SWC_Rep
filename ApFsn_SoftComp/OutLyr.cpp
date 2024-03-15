@@ -2,13 +2,13 @@
 #include "structureDeclaration.h"
 #include "Prc.h"
 
-//プロトタイプ宣言
+// プロトタイプ宣言
 void vdg_OutLyr_init(void);
 void vdg_OutLyr_GlobalUpdate(void);
 
 st_GridMap_Out stg_OutLyr_ArGridInfo[1000][4000];
 
-//コンポの初期化
+// コンポの初期化
 void vdg_OutLyr_init(void)
 {
 	U2 U2_OutLyrI_LoopI = (U2)0;
@@ -16,7 +16,7 @@ void vdg_OutLyr_init(void)
 
 	for (U2_OutLyrI_LoopI = 0; U2_OutLyrI_LoopI < 1000; U2_OutLyrI_LoopI++)
 	{
-		for (U2_OutLyrI_LoopJ = 0;  U2_OutLyrI_LoopJ < 4000; U2_OutLyrI_LoopJ++)
+		for (U2_OutLyrI_LoopJ = 0; U2_OutLyrI_LoopJ < 4000; U2_OutLyrI_LoopJ++)
 		{
 			stg_OutLyr_ArGridInfo[U2_OutLyrI_LoopI][U2_OutLyrI_LoopJ].CnObjSet = 0;
 		}
@@ -25,7 +25,7 @@ void vdg_OutLyr_init(void)
 	return;
 }
 
-//外部出力データの更新
+// 外部出力データの更新
 void vdg_OutLyr_GlobalUpdate(void)
 {
 	U2 U2_OutLyrGU_LoopI = (U2)0;
