@@ -7,9 +7,9 @@
 TEST(TestCasePrcInit, TestPrcInit1) {
 
 	stg_Prc_ArGridInfo[0][0].CnSnrDtct = 1;
-	stg_Prc_ArGridInfo[0][0].CnSodDtct = 2;
-	stg_Prc_ArGridInfo[0][0].InOcpy = 3;
-	stg_Prc_ArGridInfo[0][0].CnObjSet = 4;
+	stg_Prc_ArGridInfo[0][0].CnSodDtct = 1;
+	stg_Prc_ArGridInfo[0][0].InOcpy = 20;
+	stg_Prc_ArGridInfo[0][0].CnObjSet = 1;
 
 	vdg_Prc_init();
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[0][0].CnSnrDtct);
@@ -21,166 +21,319 @@ TEST(TestCasePrcInit, TestPrcInit1) {
 
 //vdg_Prc_GridUpdate()のユニットテスト
 // 
+// 車の後方について
 // 2つの検知が重なっている、物体の確定フラグあり
-TEST(TestCasePrcGU, MultiSnrPvm_ConfObj) {
+TEST(TestCasePrcGU,MultiSnrPvm_ConfObj) {
 
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)0;
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)0;
-	stg_InLyr_SnrDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[0].EmClstrState = (U1)1;
-	stg_InLyr_SnrDtctClstr[1].st_crd[0].In_X = (S2)0;
-	stg_InLyr_SnrDtctClstr[1].st_crd[0].In_Y = (S2)0;
-	stg_InLyr_SnrDtctClstr[1].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[1].EmClstrState = (U1)1;
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
+	//ソナー用
+	pst_workSnr[0]->st_crd[0].In_X = -700;
+	pst_workSnr[0]->st_crd[0].In_Y = -500;
+	pst_workSnr[0]->InCrdNum = 1;
+	pst_workSnr[0]->EmClstrState = 1;
+	pst_workSnr[1]->st_crd[0].In_X = -700;
+	pst_workSnr[1]->st_crd[0].In_Y = -500;
+	pst_workSnr[1]->InCrdNum = 1;
+	pst_workSnr[1]->EmClstrState = 1;
 
 	//PVM用
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_X = (U1)0;
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = (U1)0;
-	stg_InLyr_SodDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[0].EmClstrState = (U1)1;
-	stg_InLyr_SodDtctClstr[1].st_crd[0].In_X = (U1)0;
-	stg_InLyr_SodDtctClstr[1].st_crd[0].In_Y = (U1)0;
-	stg_InLyr_SodDtctClstr[1].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[1].EmClstrState = (U1)1;
+	pst_workSod[0]->st_crd[0].In_X = -700;
+	pst_workSod[0]->st_crd[0].In_Y = -500;
+	pst_workSod[0]->InCrdNum = 1;
+	pst_workSod[0]->EmClstrState = 1;
+	pst_workSod[1]->st_crd[0].In_X = -700;
+	pst_workSod[1]->st_crd[0].In_Y = -500;
+	pst_workSod[1]->InCrdNum = 1;
+	pst_workSod[1]->EmClstrState = 1;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[500][1000].CnSnrDtct);
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[500][1000].CnSodDtct);
-	EXPECT_EQ(20, stg_Prc_ArGridInfo[500][1000].InOcpy);
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[500][1000].CnObjSet);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[0][300].CnSnrDtct);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[0][300].CnSodDtct);
+	EXPECT_EQ(20, stg_Prc_ArGridInfo[0][300].InOcpy);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[0][300].CnObjSet);
 }
 // 2つの検知が重なっている、物体の確定フラグなし
-TEST(TestCasePrcGU, MultiSnrPvm_NoConfObj) {
+TEST(TestCasePrcGU,MultiSnrPvm_NoConfObj) {
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
 
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)10;
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)10;
-	stg_InLyr_SnrDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[0].EmClstrState = (U1)1;
+	pst_workSnr[0]->st_crd[0].In_X = -200;
+	pst_workSnr[0]->st_crd[0].In_Y = -100;
+	pst_workSnr[0]->InCrdNum = 1;
+	pst_workSnr[0]->EmClstrState = 1;
 	//PVM用
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_X = (U1)10;
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = (U1)10;
-	stg_InLyr_SodDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[0].EmClstrState = (U1)1;
+	pst_workSod[0]->st_crd[0].In_X = -200;
+	pst_workSod[0]->st_crd[0].In_Y = -100;
+	pst_workSod[0]->InCrdNum = 1;
+	pst_workSod[0]->EmClstrState = 1;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[510][1010].CnSnrDtct);
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[510][1010].CnSodDtct);
-	EXPECT_EQ(10, stg_Prc_ArGridInfo[510][1010].InOcpy);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[510][1010].CnObjSet);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[400][800].CnSnrDtct);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[400][800].CnSodDtct);
+	EXPECT_EQ(10, stg_Prc_ArGridInfo[400][800].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][800].CnObjSet);
 }
 
 // ソナーのみの検知がある、物体の確定フラグあり
-TEST(TestCasePrcGU, SingleSnr_ConfObj) {
+TEST(TestCasePrcGU,SingleSnr_ConfObj) {
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
 
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)20;
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)20;
-	stg_InLyr_SnrDtctClstr[0].st_crd[1].In_X = (S2)20;
-	stg_InLyr_SnrDtctClstr[0].st_crd[1].In_Y = (S2)20;
-	stg_InLyr_SnrDtctClstr[0].InCrdNum = (U1)2;
-	stg_InLyr_SnrDtctClstr[0].EmClstrState = (U1)1;
-	stg_InLyr_SnrDtctClstr[1].st_crd[0].In_X = (S2)20;
-	stg_InLyr_SnrDtctClstr[1].st_crd[0].In_Y = (S2)20;
-	stg_InLyr_SnrDtctClstr[1].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[1].EmClstrState = (U1)1;
-	stg_InLyr_SnrDtctClstr[2].st_crd[0].In_X = (S2)20;
-	stg_InLyr_SnrDtctClstr[2].st_crd[0].In_Y = (S2)20;
-	stg_InLyr_SnrDtctClstr[2].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[2].EmClstrState = (U1)1;
+	pst_workSnr[0]->st_crd[0].In_X = -900;
+	pst_workSnr[0]->st_crd[0].In_Y = -400;
+	pst_workSnr[0]->st_crd[1].In_X = -900;
+	pst_workSnr[0]->st_crd[1].In_Y = -400;
+	pst_workSnr[0]->InCrdNum = 2;
+	pst_workSnr[0]->EmClstrState = 1;
+	pst_workSnr[1]->st_crd[0].In_X = -900;
+	pst_workSnr[1]->st_crd[0].In_Y = -400;
+	pst_workSnr[1]->InCrdNum = 1;
+	pst_workSnr[1]->EmClstrState = 1;
+	pst_workSnr[2]->st_crd[0].In_X = -900;
+	pst_workSnr[2]->st_crd[0].In_Y = -400;
+	pst_workSnr[2]->InCrdNum = 1;
+	pst_workSnr[2]->EmClstrState = 1;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[520][1020].CnSnrDtct);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[520][1020].CnSodDtct);
-	EXPECT_EQ(20, stg_Prc_ArGridInfo[520][1020].InOcpy);
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[520][1020].CnObjSet);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[100][100].CnSnrDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[100][100].CnSodDtct);
+	EXPECT_EQ(20, stg_Prc_ArGridInfo[100][100].InOcpy);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[100][100].CnObjSet);
 }
 // ソナーのみの検知がある、物体の確定フラグなし
-TEST(TestCasePrcGU, SingleSnr_NoConfObj) {
+TEST(TestCasePrcGU,SingleSnr_NoConfObj) {
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
 
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)30;
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)30;
-	stg_InLyr_SnrDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[0].EmClstrState = (U1)1;
-	stg_InLyr_SnrDtctClstr[1].st_crd[0].In_X = (S2)30;
-	stg_InLyr_SnrDtctClstr[1].st_crd[0].In_Y = (S2)30;
-	stg_InLyr_SnrDtctClstr[1].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[1].EmClstrState = (U1)0;
-	stg_InLyr_SnrDtctClstr[2].st_crd[0].In_X = (S2)30;
-	stg_InLyr_SnrDtctClstr[2].st_crd[0].In_Y = (S2)30;
-	stg_InLyr_SnrDtctClstr[2].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[2].EmClstrState = (U1)0;
+	pst_workSnr[0]->st_crd[0].In_X = -1000;
+	pst_workSnr[0]->st_crd[0].In_Y = 400;
+	pst_workSnr[0]->InCrdNum = 1;
+	pst_workSnr[0]->EmClstrState = 1;
+	pst_workSnr[1]->st_crd[0].In_X = -1000;
+	pst_workSnr[1]->st_crd[0].In_Y = 400;
+	pst_workSnr[1]->InCrdNum = 1;
+	pst_workSnr[1]->EmClstrState = (U1)0;
+	pst_workSnr[2]->st_crd[0].In_X = -1000;
+	pst_workSnr[2]->st_crd[0].In_Y = 400;
+	pst_workSnr[2]->InCrdNum = 1;
+	pst_workSnr[2]->EmClstrState = (U1)0;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[530][1030].CnSnrDtct);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[530][1030].CnSodDtct);
-	EXPECT_EQ(5, stg_Prc_ArGridInfo[530][1030].InOcpy);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[530][1030].CnObjSet);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[900][0].CnSnrDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[900][0].CnSodDtct);
+	EXPECT_EQ(5, stg_Prc_ArGridInfo[900][0].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[900][0].CnObjSet);
 }
 
 // PVMのみの検知がある、物体の確定フラグあり
-TEST(TestCasePrcGU, SinglePvm_ConfObj) {
+TEST(TestCasePrcGU,SinglePvm_ConfObj) {
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
 
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_X = (S2)40;
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = (S2)40;
-	stg_InLyr_SodDtctClstr[0].st_crd[1].In_X = (S2)40;
-	stg_InLyr_SodDtctClstr[0].st_crd[1].In_Y = (S2)40;
-	stg_InLyr_SodDtctClstr[0].InCrdNum = (U1)2;
-	stg_InLyr_SodDtctClstr[0].EmClstrState = (U1)1;
-	stg_InLyr_SodDtctClstr[1].st_crd[0].In_X = (S2)40;
-	stg_InLyr_SodDtctClstr[1].st_crd[0].In_Y = (S2)40;
-	stg_InLyr_SodDtctClstr[1].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[1].EmClstrState = (U1)1;
-	stg_InLyr_SodDtctClstr[2].st_crd[0].In_X = (S2)40;
-	stg_InLyr_SodDtctClstr[2].st_crd[0].In_Y = (S2)40;
-	stg_InLyr_SodDtctClstr[2].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[2].EmClstrState = (U1)1;
+	pst_workSod[0]->st_crd[0].In_X = -200;
+	pst_workSod[0]->st_crd[0].In_Y = 200;
+	pst_workSod[0]->st_crd[1].In_X = -200;
+	pst_workSod[0]->st_crd[1].In_Y = 200;
+	pst_workSod[0]->InCrdNum = 2;
+	pst_workSod[0]->EmClstrState = 1;
+	pst_workSod[1]->st_crd[0].In_X = -200;
+	pst_workSod[1]->st_crd[0].In_Y = 200;
+	pst_workSod[1]->InCrdNum = 1;
+	pst_workSod[1]->EmClstrState = 1;
+	pst_workSod[2]->st_crd[0].In_X = -200;
+	pst_workSod[2]->st_crd[0].In_Y = 200;
+	pst_workSod[2]->InCrdNum = 1;
+	pst_workSod[2]->EmClstrState = 1;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[540][1040].CnSnrDtct);
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[540][1040].CnSodDtct);
-	EXPECT_EQ(20, stg_Prc_ArGridInfo[540][1040].InOcpy);
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[540][1040].CnObjSet);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[700][800].CnSnrDtct);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[700][800].CnSodDtct);
+	EXPECT_EQ(20, stg_Prc_ArGridInfo[700][800].InOcpy);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[700][800].CnObjSet);
 }
 // PVMのみの検知がある、物体の確定フラグなし
-TEST(TestCasePrcGU, SinglePvm_NoConfObj) {
+TEST(TestCasePrcGU,SinglePvm_NoConfObj) {
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
 
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_X = (S2)50;
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = (S2)50;
-	stg_InLyr_SodDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[0].EmClstrState = (U1)1;
-	stg_InLyr_SodDtctClstr[1].st_crd[0].In_X = (S2)50;
-	stg_InLyr_SodDtctClstr[1].st_crd[0].In_Y = (S2)50;
-	stg_InLyr_SodDtctClstr[1].InCrdNum = (U1)0;
-	stg_InLyr_SodDtctClstr[1].EmClstrState = (U1)1;
-	stg_InLyr_SodDtctClstr[2].st_crd[0].In_X = (S2)50;
-	stg_InLyr_SodDtctClstr[2].st_crd[0].In_Y = (S2)50;
-	stg_InLyr_SodDtctClstr[2].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[2].EmClstrState = (U1)0;
+	pst_workSod[0]->st_crd[0].In_X = -900;
+	pst_workSod[0]->st_crd[0].In_Y = 400;
+	pst_workSod[0]->InCrdNum = 1;
+	pst_workSod[0]->EmClstrState = 1;
+	pst_workSod[1]->st_crd[0].In_X = -900;
+	pst_workSod[1]->st_crd[0].In_Y = 400;
+	pst_workSod[1]->InCrdNum = 0;
+	pst_workSod[1]->EmClstrState = 1;
+	pst_workSod[2]->st_crd[0].In_X = -900;
+	pst_workSod[2]->st_crd[0].In_Y = 400;
+	pst_workSod[2]->InCrdNum = 1;
+	pst_workSod[2]->EmClstrState = (U1)0;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[550][1050].CnSnrDtct);
-	EXPECT_EQ(1, stg_Prc_ArGridInfo[550][1050].CnSodDtct);
-	EXPECT_EQ(5, stg_Prc_ArGridInfo[550][1050].InOcpy);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[550][1050].CnObjSet);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[900][100].CnSnrDtct);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[900][100].CnSodDtct);
+	EXPECT_EQ(5, stg_Prc_ArGridInfo[900][100].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[900][100].CnObjSet);
 }
 
 // 検知なし、物体の確定フラグなし
-TEST(TestCasePrcGU, NoDetection_NoConfObj) {
+TEST(TestCasePrcGU,NoDetection_NoConfObj) {
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
 
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)60;
-	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)60;
-	stg_InLyr_SnrDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SnrDtctClstr[0].EmClstrState = (U1)0;
+	pst_workSnr[0]->st_crd[0].In_X = -500;
+	pst_workSnr[0]->st_crd[0].In_Y = (S2)0;
+	pst_workSnr[0]->InCrdNum = 1;
+	pst_workSnr[0]->EmClstrState = (U1)0;
 	//PVM用
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_X = (U1)60;
-	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = (U1)60;
-	stg_InLyr_SodDtctClstr[0].InCrdNum = (U1)1;
-	stg_InLyr_SodDtctClstr[0].EmClstrState = (U1)0;
+	pst_workSod[0]->st_crd[0].In_X = -500;
+	pst_workSod[0]->st_crd[0].In_Y = (S2)0;
+	pst_workSod[0]->InCrdNum = 1;
+	pst_workSod[0]->EmClstrState = (U1)0;
 
 	vdg_Prc_GridUpdate();
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[560][1060].CnSnrDtct);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[560][1060].CnSodDtct);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[560][1060].InOcpy);
-	EXPECT_EQ(0, stg_Prc_ArGridInfo[560][1060].CnObjSet);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][500].CnSnrDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][500].CnSodDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][500].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][500].CnObjSet);
 }
 
-//車の前側
+//車の前方について
+//2つの検知が重なる
+TEST(TestCasePrcGU, FrontOfTheCar_MultSnrPvm_NoConfObj) {
+
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
+	//ソナー用
+	pst_workSnr[0]->st_crd[0].In_X = 2000;
+	pst_workSnr[0]->st_crd[0].In_Y = (S2)0;
+	pst_workSnr[0]->InCrdNum = 2;
+	pst_workSnr[0]->EmClstrState = 1;
+
+	//PVM用
+	pst_workSod[0]->st_crd[0].In_X = 2000;
+	pst_workSod[0]->st_crd[0].In_Y = (S2)0;
+	pst_workSod[0]->InCrdNum = 1;
+	pst_workSod[0]->EmClstrState = 1;
+
+	vdg_Prc_GridUpdate();
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[500][3000].CnSnrDtct);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[500][3000].CnSodDtct);
+	EXPECT_EQ(10, stg_Prc_ArGridInfo[500][3000].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][3000].CnObjSet);
+}
+
+// ソナーのみの検知がある
+TEST(TestCasePrcGU, FrontOfTheCar_SingleSnr_NoConfObj) {
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
+
+	pst_workSnr[0]->st_crd[0].In_X = 2000;
+	pst_workSnr[0]->st_crd[0].In_Y = 100;
+	pst_workSnr[0]->InCrdNum = 1;
+	pst_workSnr[0]->EmClstrState = 1;
+
+	vdg_Prc_GridUpdate();
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[600][3000].CnSnrDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[600][3000].CnSodDtct);
+	EXPECT_EQ(5, stg_Prc_ArGridInfo[600][3000].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[600][3000].CnObjSet);
+}
+
+// PVMのみの検知がある
+TEST(TestCasePrcGU, FrontOfTheCar_SingleSod_NoConfObj) {
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
+
+	pst_workSod[0]->st_crd[0].In_X = 2000;
+	pst_workSod[0]->st_crd[0].In_Y = 200;
+	pst_workSod[0]->InCrdNum = 1;
+	pst_workSod[0]->EmClstrState = 1;
+
+	vdg_Prc_GridUpdate();
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[700][3000].CnSnrDtct);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[700][3000].CnSodDtct);
+	EXPECT_EQ(5, stg_Prc_ArGridInfo[700][3000].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[700][3000].CnObjSet);
+}
+
+// 検知なし
+TEST(TestCasePrcGU, FrontOfTheCar_NoDetection_NoConfObj) {
+	st_snr_clstr* pst_workSnr[3];
+	for (int i = 0; i < 3; i++)
+	{
+		pst_workSnr[i] = &(stg_InLyr_SnrDtctClstr[i]);
+	}
+	st_sod_clstr* pst_workSod[4];
+	for (int i = 0; i < 4; i++)
+	{
+		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
+	}
+
+	pst_workSnr[0]->st_crd[0].In_X = 2000;
+	pst_workSnr[0]->st_crd[0].In_Y = -100;
+	pst_workSnr[0]->InCrdNum = 1;
+	pst_workSnr[0]->EmClstrState = (U1)0;
+	//PVM用
+	pst_workSod[0]->st_crd[0].In_X = 2000;
+	pst_workSod[0]->st_crd[0].In_Y = -100;
+	pst_workSod[0]->InCrdNum = 1;
+	pst_workSod[0]->EmClstrState = (U1)0;
+
+	vdg_Prc_GridUpdate();
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][3000].CnSnrDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][3000].CnSodDtct);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][3000].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][3000].CnObjSet);
+}
