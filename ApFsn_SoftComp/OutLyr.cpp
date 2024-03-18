@@ -11,14 +11,14 @@ st_GridMap_Out stg_OutLyr_ArGridInfo[1000][4000];
 // コンポの初期化
 void vdg_OutLyr_init(void)
 {
-	U2 U2_OutLyrI_LoopI = (U2)0;
-	U2 U2_OutLyrI_LoopJ = (U2)0;
+	U2 U2_OutLyrI_LoopRow = (U2)0;
+	U2 U2_OutLyrI_LoopColumn = (U2)0;
 
-	for (U2_OutLyrI_LoopI = 0; U2_OutLyrI_LoopI < 1000; U2_OutLyrI_LoopI++)
+	for (U2_OutLyrI_LoopRow = 0; U2_OutLyrI_LoopRow < 1000; U2_OutLyrI_LoopRow++)
 	{
-		for (U2_OutLyrI_LoopJ = 0; U2_OutLyrI_LoopJ < 4000; U2_OutLyrI_LoopJ++)
+		for (U2_OutLyrI_LoopColumn = 0; U2_OutLyrI_LoopColumn < 4000; U2_OutLyrI_LoopColumn++)
 		{
-			stg_OutLyr_ArGridInfo[U2_OutLyrI_LoopI][U2_OutLyrI_LoopJ].CnObjSet = 0;
+			stg_OutLyr_ArGridInfo[U2_OutLyrI_LoopRow][U2_OutLyrI_LoopColumn].CnObjSet = 0;
 		}
 	}
 
@@ -28,14 +28,14 @@ void vdg_OutLyr_init(void)
 // 外部出力データの更新
 void vdg_OutLyr_GlobalUpdate(void)
 {
-	U2 U2_OutLyrGU_LoopI = (U2)0;
-	U2 U2_OutLyrGU_LoopJ = (U2)0;
+	U2 U2_OutLyrGU_LoopRow = (U2)0;
+	U2 U2_OutLyrGU_LoopColumn = (U2)0;
 
-	for (U2_OutLyrGU_LoopI = 0; U2_OutLyrGU_LoopI < 1000; U2_OutLyrGU_LoopI++)
+	for (U2_OutLyrGU_LoopRow = 0; U2_OutLyrGU_LoopRow < 1000; U2_OutLyrGU_LoopRow++)
 	{
-		for (U2_OutLyrGU_LoopJ = 0; U2_OutLyrGU_LoopJ < 4000; U2_OutLyrGU_LoopJ++)
+		for (U2_OutLyrGU_LoopColumn = 0; U2_OutLyrGU_LoopColumn < 4000; U2_OutLyrGU_LoopColumn++)
 		{
-			stg_OutLyr_ArGridInfo[U2_OutLyrGU_LoopI][U2_OutLyrGU_LoopJ].CnObjSet = stg_Prc_ArGridInfo[U2_OutLyrGU_LoopI][U2_OutLyrGU_LoopJ].CnObjSet;
+			stg_OutLyr_ArGridInfo[U2_OutLyrGU_LoopRow][U2_OutLyrGU_LoopColumn].CnObjSet = stg_Prc_ArGridInfo[U2_OutLyrGU_LoopRow][U2_OutLyrGU_LoopColumn].CnObjSet;
 		}
 	}
 
