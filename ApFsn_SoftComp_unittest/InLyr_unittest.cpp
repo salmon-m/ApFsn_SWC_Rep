@@ -3,14 +3,14 @@
 #include "InLyr.h"
 #include "InLyr.cpp"
 
-//vdg_InLyr_init()‚Ìƒ†ƒjƒbƒgƒeƒXƒg
-TEST(TestCaseInLyrInit, TestMainInLyrInit1) {
-	//ƒ\ƒi[ƒZƒ“ƒT—p
+//vdg_InLyr_init()ï¿½Ìƒï¿½ï¿½jï¿½bï¿½gï¿½eï¿½Xï¿½g
+TEST(TestCaseInLyrInit, InLyrInit) {
+	//ï¿½\ï¿½iï¿½[ï¿½Zï¿½ï¿½ï¿½Tï¿½p
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = (S2)1;
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_Y = (S2)2;
 	stg_InLyr_SnrDtctClstr[0].InCrdNum = (U1)1;
 	stg_InLyr_SnrDtctClstr[0].EmClstrState = (U1)2;
-	//PVW—p
+	//PVWï¿½p
 	stg_InLyr_SodDtctClstr[0].st_crd[0].In_X = (U1)3;
 	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = (U1)4;
 	stg_InLyr_SodDtctClstr[0].InCrdNum = (U1)3;
@@ -28,9 +28,9 @@ TEST(TestCaseInLyrInit, TestMainInLyrInit1) {
 	EXPECT_EQ(0, stg_InLyr_SodDtctClstr[0].EmClstrState);
 }
 
-//vdg_InLyr_GlobalCapture()‚Ìƒ†ƒjƒbƒgƒeƒXƒg
-TEST(TestCaseInLyrGC, TestMainInLyrGC1) {
-	//ƒ\ƒi[ƒZƒ“ƒT
+//vdg_InLyr_GlobalCapture()ï¿½Ìƒï¿½ï¿½jï¿½bï¿½gï¿½eï¿½Xï¿½g
+TEST(TestCaseInLyrGC, GlobalCapture) {
+	//ï¿½\ï¿½iï¿½[ï¿½Zï¿½ï¿½ï¿½T
 	stg_csr_dtct_clstr[0].st_dtct_crd[2].In_X = -100;
 	stg_csr_dtct_clstr[0].st_dtct_crd[2].In_Y = 200;
 	stg_csr_dtct_clstr[0].InCrdNum = 3;
