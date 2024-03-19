@@ -2,13 +2,13 @@
 #include "structureDeclaration.h"
 #include "InLyr.h"
 
-// プロトタイプ宣言
+// ?v???g?^?C?v??
 void vdg_Prc_init(void);
 void vdg_Prc_GridUpdate(void);
 
-st_GridMap stg_Prc_ArGridInfo[1000][4000]; // グリッドマップ情報
+st_GridMap stg_Prc_ArGridInfo[1000][4000]; // ?O???b?h?}?b?v???
 
-// 初期化
+// ??????
 void vdg_Prc_init(void)
 {
 	U2 U2_PrcI_LoopRow = (U2)0;
@@ -38,8 +38,9 @@ void vdg_Prc_GridUpdate(void)
 	U2 U2_PrcGU_LoopColumn = (U2)0;
 	S2 S2_PrcGU_X = (S2)0;
 	S2 S2_PrcGU_Y = (S2)0;
+	U1 U1_PrcGU_Guard = (U1)0;
 
-	// ソナー
+	// ?\?i?[
 	for (S1_PrcGU_SnrClusterCount = 0; (S1_PrcGU_SnrClusterCount < 3) && (stg_InLyr_SnrDtctClstr[S1_PrcGU_SnrClusterCount].InCrdNum != 0); S1_PrcGU_SnrClusterCount++)
 	{
 		for (S1_PrcGU_SnrPointCount = 0; S1_PrcGU_SnrPointCount < stg_InLyr_SnrDtctClstr[S1_PrcGU_SnrClusterCount].InCrdNum; S1_PrcGU_SnrPointCount++)
@@ -49,11 +50,17 @@ void vdg_Prc_GridUpdate(void)
 				S2_PrcGU_X = stg_InLyr_SnrDtctClstr[S1_PrcGU_SnrClusterCount].st_crd[S1_PrcGU_SnrPointCount].In_X + 1000;
 				S2_PrcGU_Y = stg_InLyr_SnrDtctClstr[S1_PrcGU_SnrClusterCount].st_crd[S1_PrcGU_SnrPointCount].In_Y + 500;
 				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].CnSnrDtct = 1;
-				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
-				// 飽和ガード
-				if (stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy >= 250)
+				/* ?O?a?K?[?h : 250?????????? */
+				// 245???????5???????
+				if (stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy <= 245)
 				{
-					stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy = 20;
+					stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
+				}
+				// 246????250?????????
+				else
+				{
+					U1_PrcGU_Guard = (stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy % 250);
+					stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += U1_PrcGU_Guard;
 				}
 			}
 		}
@@ -69,17 +76,23 @@ void vdg_Prc_GridUpdate(void)
 				S2_PrcGU_X = stg_InLyr_SodDtctClstr[S1_PrcGU_SodClusterCount].st_crd[S1_PrcGU_SodPointCount].In_X + 1000;
 				S2_PrcGU_Y = stg_InLyr_SodDtctClstr[S1_PrcGU_SodClusterCount].st_crd[S1_PrcGU_SodPointCount].In_Y + 500;
 				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].CnSodDtct = 1;
-				stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
-				// 飽和ガード
-				if (stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy >= 250)
+				/* ?O?a?K?[?h : 250?????????? */
+				// 245???????5???????
+				if (stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy <= 245)
 				{
-					stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy = 20;
+					stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += 5;
+				}
+				// 246????250?????????
+				else
+				{
+					U1_PrcGU_Guard = (stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy % 250);
+					stg_Prc_ArGridInfo[S2_PrcGU_Y][S2_PrcGU_X].InOcpy += U1_PrcGU_Guard;
 				}
 			}
 		}
 	}
 
-	// 物体確定
+	// ????m??
 	for (U2_PrcGU_LoopRow = 0; U2_PrcGU_LoopRow < 1000; U2_PrcGU_LoopRow++)
 	{
 		for (U2_PrcGU_LoopColumn = 0; U2_PrcGU_LoopColumn < 4000; U2_PrcGU_LoopColumn++)
