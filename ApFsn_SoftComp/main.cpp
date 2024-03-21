@@ -4,36 +4,36 @@
 #include "Prc.h"
 #include "OutLyr.h"
 
-//  Dummyï¿½ï¿½`
-//  ï¿½{ï¿½ï¿½ï¿½ï¿½ main.cppï¿½ÌŠOï¿½ï¿½ï¿½ï¿½ï¿½Í‚É‚È‚é‚ªï¿½A
-//  ApFsn_SoftComp.cppï¿½Å‚ï¿½main()ï¿½ï¿½`ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½A
-//  main()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½[ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½Unittest.exeï¿½ï¿½main()ï¿½ï¿½ï¿½Ä‚ï¿½Å‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½ï¿½
-//  ï¿½ï¿½Ş‚ï¿½ï¿½ï¿½ main.cpp ï¿½ÉŠOï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½`
+//Dummy’è‹`
+//–{“–‚Í main.cpp‚ÌŠO•”“ü—Í‚É‚È‚é‚ªA
+//ApFsn_SoftComp.cpp‚Å‚Ímain()’è‹`‚µ‚Ä‚¨‚èA
+//main()‚ğƒŠƒ“ƒJ[“ü—Í‚·‚é‚ÆUnittest.exe‚ªmain()‚ğŒÄ‚ñ‚Å‚µ‚Ü‚¤‚½‚ß
+//‚â‚Ş‚¦‚¸ main.cpp ‚ÉŠO•”“ü—Í‚ğ’è‹`
 U1 u1g_ApFsn_IG;
 st_csr_clstr stg_csr_dtct_clstr[3];
 st_pvm_clstr stg_pvm_dtct_clstr[4];
-// Dummyï¿½ï¿½`
+// Dummy’è‹`
 
-static U1 u1s_main_InCnt;	 // ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½ï¿½
-static U1 u1s_main_Cn4Cycle; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
+static U1 u1s_main_InCnt;	 //ƒJƒEƒ“ƒg”
+static U1 u1s_main_Cn4Cycle; //’èüŠúƒtƒ‰ƒO
 
-// ï¿½vï¿½ï¿½ï¿½gï¿½^ï¿½Cï¿½vï¿½éŒ¾
+//ƒvƒƒgƒ^ƒCƒvéŒ¾
 void vdg_main_init(void);
 void vdg_main_4cycle(void);
 
 
 void main_schedule(void)
 {
-	// ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
+	//‰‰ñƒtƒ‰ƒO
 	if (u1g_ApFsn_IG == ON)
 	{
 		vdg_main_init();
 	}
 	else
 	{
-		// ï¿½Jï¿½Eï¿½ï¿½ï¿½g
+		// ƒJƒEƒ“ƒg
 		u1s_main_InCnt++;
-		// ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½ï¿½ï¿½mï¿½F
+		// ƒJƒEƒ“ƒg”Šm”F
 		if ( u1s_main_InCnt == (U1)4 )
 		{
 			u1s_main_Cn4Cycle = ON;
@@ -43,7 +43,7 @@ void main_schedule(void)
 		{
 			u1s_main_Cn4Cycle = OFF;
 		}
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½O
+		// ’èüŠúƒtƒ‰ƒO
 		if (u1s_main_Cn4Cycle == ON)
 		{
 			vdg_main_4cycle();
@@ -53,14 +53,14 @@ void main_schedule(void)
 	return;
 }
 
-// ï¿½Rï¿½ï¿½ï¿½|ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
+// ƒRƒ“ƒ|‚Ì‰Šú‰»
 void vdg_main_init(void)
 {
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½RAMï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//©ƒ‚ƒWƒ…[ƒ‹‚ÌRAM‰Šú‰»
 	u1s_main_InCnt = (U1)0;
 	u1s_main_Cn4Cycle = OFF;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öï¿½ï¿½Rï¿½[ï¿½ï¿½
+	//‘¼ƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»ŠÖ”ƒR[ƒ‹
 	vdg_InLyr_init();
 	vdg_Prc_init();
 	vdg_OutLyr_init();
@@ -68,7 +68,7 @@ void vdg_main_init(void)
 	return;
 }
 
-// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½s
+//’èüŠú‚Åˆ—‚ğÀs
 void vdg_main_4cycle(void)
 {
 	vdg_InLyr_GlobalCapture();

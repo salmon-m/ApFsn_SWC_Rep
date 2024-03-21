@@ -2,13 +2,13 @@
 #include "structureDeclaration.h"
 #include "InLyr.h"
 
-// ?v???g?^?C?v??
+// プロトタイプ宣言
 void vdg_Prc_init(void);
 void vdg_Prc_GridUpdate(void);
 
-st_GridMap stg_Prc_ArGridInfo[1000][4000]; // ?O???b?h?}?b?v???
+st_GridMap stg_Prc_ArGridInfo[1000][4000]; // グリッドマップ情報
 
-// ??????
+// 初期化
 void vdg_Prc_init(void)
 {
 	U2 u2t_PrcI_LoopRow;
@@ -49,7 +49,12 @@ void vdg_Prc_GridUpdate(void)
 				s2t_PrcGU_X = stg_InLyr_SnrDtctClstr[s1t_PrcGU_SnrClusterCount].st_crd[s1t_PrcGU_SnrCrdCount].In_X + (S2)1000;
 				s2t_PrcGU_Y = stg_InLyr_SnrDtctClstr[s1t_PrcGU_SnrClusterCount].st_crd[s1t_PrcGU_SnrCrdCount].In_Y + (S2)500;
 				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].CnSnrDtct = (U1)1;
-				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy += (U1)5;
+				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy + (U1)5;
+				//飽和ガード
+				if (stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy > 250) 
+				{
+					stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = 250;
+				}
 			}
 		}
 	}
@@ -64,7 +69,12 @@ void vdg_Prc_GridUpdate(void)
 				s2t_PrcGU_X = stg_InLyr_SodDtctClstr[s1t_PrcGU_SodClusterCount].st_crd[s1t_PrcGU_SodCrdCount].In_X + (S2)1000;
 				s2t_PrcGU_Y = stg_InLyr_SodDtctClstr[s1t_PrcGU_SodClusterCount].st_crd[s1t_PrcGU_SodCrdCount].In_Y + (S2)500;
 				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].CnSodDtct = (U1)1;
-				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy += (U1)5;
+				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy + (U1)5;
+				//飽和ガード
+				if (stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy > 250)
+				{
+					stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = 250;
+				}
 			}
 		}
 	}

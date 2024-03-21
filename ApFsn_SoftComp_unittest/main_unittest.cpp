@@ -4,7 +4,7 @@
 #include "Prc.h"
 #include "main.cpp"
 
-//main_schedule()ï¿½Ìƒï¿½ï¿½jï¿½bï¿½gï¿½eï¿½Xï¿½g
+//main_schedule()‚Ìƒ†ƒjƒbƒgƒeƒXƒg
 TEST(TestCaseMainSchedule, firstCycle) {
 	u1g_ApFsn_IG = ON;
 	main_schedule();
@@ -15,7 +15,7 @@ TEST(TestCaseMainSchedule, firstCycle) {
 TEST(TestCaseMainSchedule, SecondCycle) {
 	u1g_ApFsn_IG = OFF;
 	u1s_main_InCnt = 0;
-	u1s_main_Cn4Cycle = ON; //ï¿½ï¿½ï¿½Ò’lï¿½Æ‚ÍˆÙ‚È‚ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	u1s_main_Cn4Cycle = ON; //Šú‘Ò’l‚Æ‚ÍˆÙ‚È‚é’l‚ð“ü‚ê‚é
 	main_schedule();
 	EXPECT_EQ(1, u1s_main_InCnt);
 	EXPECT_EQ(OFF, u1s_main_Cn4Cycle);
@@ -24,14 +24,14 @@ TEST(TestCaseMainSchedule, SecondCycle) {
 TEST(TestCaseMainSchedule, ForeCycle) {
 	u1g_ApFsn_IG = OFF;
 	u1s_main_InCnt = 3;
-	u1s_main_Cn4Cycle = OFF; //ï¿½ï¿½ï¿½Ò’lï¿½Æ‚ÍˆÙ‚È‚ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	u1s_main_Cn4Cycle = OFF; //Šú‘Ò’l‚Æ‚ÍˆÙ‚È‚é’l‚ð“ü‚ê‚é
 	main_schedule();
 	EXPECT_EQ(0, u1s_main_InCnt);
 	EXPECT_EQ(ON, u1s_main_Cn4Cycle);
 }
 
 
-//main_init()ï¿½Ìƒï¿½ï¿½jï¿½bï¿½gï¿½eï¿½Xï¿½g
+//main_init()‚Ìƒ†ƒjƒbƒgƒeƒXƒg
 TEST(TestCaseMainInit, MainInit) {
 	stg_InLyr_SnrDtctClstr[0].st_crd[0].In_X = 1;
 	stg_InLyr_SodDtctClstr[0].st_crd[0].In_Y = 1;
@@ -48,7 +48,7 @@ TEST(TestCaseMainInit, MainInit) {
 	EXPECT_EQ(0, stg_OutLyr_ArGridInfo[0][0].CnObjSet);
 }
 
-//vdg_main_4cycle()ï¿½Ìƒï¿½ï¿½jï¿½bï¿½gï¿½eï¿½Xï¿½g
+//vdg_main_4cycle()‚Ìƒ†ƒjƒbƒgƒeƒXƒg
 TEST(TestCaseMain4cycle, Main4cycle1) {
 	stg_csr_dtct_clstr[0].st_dtct_crd[0].In_X = -100;
 	stg_csr_dtct_clstr[0].st_dtct_crd[0].In_Y = 200;
