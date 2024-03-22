@@ -6,9 +6,13 @@
 // プロトタイプ宣言
 void vdg_InLyr_init(void);
 void vdg_InLyr_GlobalCapture(void);
+void vds_InLyr_CapSodClstr(st_pvm_clstr(*psts_InLyrCSC_InClstr), st_sod_clstr(*psts_InLyrCSC_OutClstr));
 
 st_snr_clstr stg_InLyr_SnrDtctClstr[3]; // ソナーセンサ検知クラスタ
 st_sod_clstr stg_InLyr_SodDtctClstr[4]; // PVM検知クラスタ
+
+st_pvm_clstr *psts_InLyr_PvmClstr; // 外部データのPVM検知クラスタ用のポインタ
+st_sod_clstr *psts_InLyr_SodClstr; // InLyrのPVM検知クラスタ用のポインタ
 
 // 初期化
 void vdg_InLyr_init(void)
@@ -51,7 +55,6 @@ void vdg_InLyr_GlobalCapture(void)
 	S1 s1t_InLyrGC_SnrClusterCount;
 	S1 s1t_InLyrGC_SnrCrdCount;
 	S1 s1t_InLyrGC_SodClusterCount;
-	S1 s1t_InLyrGC_SodCrdCount;
 
 	// ソナーセンサ検知クラスタ取り込み
 	for (s1t_InLyrGC_SnrClusterCount = (S1)0; s1t_InLyrGC_SnrClusterCount < (S1)3; s1t_InLyrGC_SnrClusterCount++)
@@ -68,14 +71,25 @@ void vdg_InLyr_GlobalCapture(void)
 	// PVM検知クラスタ取り込み
 	for (s1t_InLyrGC_SodClusterCount = (S1)0; s1t_InLyrGC_SodClusterCount < (S1)4; s1t_InLyrGC_SodClusterCount++)
 	{
-		for (s1t_InLyrGC_SodCrdCount = (S1)0; s1t_InLyrGC_SodCrdCount < (S1)6; s1t_InLyrGC_SodCrdCount++)
-		{
-			stg_InLyr_SodDtctClstr[s1t_InLyrGC_SodClusterCount].st_crd[s1t_InLyrGC_SodCrdCount].In_X = stg_pvm_dtct_clstr[s1t_InLyrGC_SodClusterCount].st_dtct_crd[s1t_InLyrGC_SodCrdCount].In_X;
-			stg_InLyr_SodDtctClstr[s1t_InLyrGC_SodClusterCount].st_crd[s1t_InLyrGC_SodCrdCount].In_Y = stg_pvm_dtct_clstr[s1t_InLyrGC_SodClusterCount].st_dtct_crd[s1t_InLyrGC_SodCrdCount].In_Y;
-		}
-		stg_InLyr_SodDtctClstr[s1t_InLyrGC_SodClusterCount].InCrdNum = stg_pvm_dtct_clstr[s1t_InLyrGC_SodClusterCount].InCrdNum;
-		stg_InLyr_SodDtctClstr[s1t_InLyrGC_SodClusterCount].EmClstrState = stg_pvm_dtct_clstr[s1t_InLyrGC_SodClusterCount].EmClstrState;
+		psts_InLyr_PvmClstr = &stg_pvm_dtct_clstr[s1t_InLyrGC_SodClusterCount];
+		psts_InLyr_SodClstr = &stg_InLyr_SodDtctClstr[s1t_InLyrGC_SodClusterCount];
+		vds_InLyr_CapSodClstr(psts_InLyr_PvmClstr, psts_InLyr_SodClstr);
 	}
+
+	return;
+}
+
+// PVM検知クラスタ１つ分を取り込む
+void vds_InLyr_CapSodClstr(st_pvm_clstr(*psts_InLyrCSC_InClstr), st_sod_clstr(*psts_InLyrCSC_OutClstr))
+{
+	S1 s1t_InLyrGC_SodCrdCount;
+	for (s1t_InLyrGC_SodCrdCount = (S1)0; s1t_InLyrGC_SodCrdCount < (S1)6; s1t_InLyrGC_SodCrdCount++)
+	{
+		psts_InLyrCSC_OutClstr->st_crd[s1t_InLyrGC_SodCrdCount].In_X = psts_InLyrCSC_InClstr->st_dtct_crd[s1t_InLyrGC_SodCrdCount].In_X;
+		psts_InLyrCSC_OutClstr->st_crd[s1t_InLyrGC_SodCrdCount].In_Y = psts_InLyrCSC_InClstr->st_dtct_crd[s1t_InLyrGC_SodCrdCount].In_Y;
+	}
+	psts_InLyrCSC_OutClstr->InCrdNum = psts_InLyrCSC_InClstr->InCrdNum;
+	psts_InLyrCSC_OutClstr->EmClstrState = psts_InLyrCSC_InClstr->EmClstrState;
 
 	return;
 }
