@@ -4,27 +4,27 @@
 #include "Prc.h"
 #include "OutLyr.h"
 
-//  Dummy定義
-//  本当は main.cppの外部入力になるが、
-//  ApFsn_SoftComp.cppではmain()定義しており、
-//  main()をリンカー入力するとUnittest.exeがmain()を呼んでしまうため
-//  やむえず main.cpp に外部入力を定義
+//Dummy定義
+//本当は main.cppの外部入力になるが、
+//ApFsn_SoftComp.cppではmain()定義しており、
+//main()をリンカー入力するとUnittest.exeがmain()を呼んでしまうため
+//やむえず main.cpp に外部入力を定義
 U1 u1g_ApFsn_IG;
 st_csr_clstr stg_csr_dtct_clstr[3];
 st_pvm_clstr stg_pvm_dtct_clstr[4];
 // Dummy定義
 
-static U1 u1s_main_InCnt;	 // カウント数
-static U1 u1s_main_Cn4Cycle; // 定周期フラグ
+static U1 u1s_main_InCnt;	 //カウント数
+static U1 u1s_main_Cn4Cycle; //定周期フラグ
 
-// プロトタイプ宣言
+//プロトタイプ宣言
 void vdg_main_init(void);
 void vdg_main_4cycle(void);
 
 
 void main_schedule(void)
 {
-	// 初回フラグ
+	//初回フラグ
 	if (u1g_ApFsn_IG == ON)
 	{
 		vdg_main_init();
@@ -34,7 +34,7 @@ void main_schedule(void)
 		// カウント
 		u1s_main_InCnt++;
 		// カウント数確認
-		if ((u1s_main_InCnt % 4) == 0)
+		if ( u1s_main_InCnt == (U1)4 )
 		{
 			u1s_main_Cn4Cycle = ON;
 			u1s_main_InCnt = (U1)0;
@@ -48,22 +48,19 @@ void main_schedule(void)
 		{
 			vdg_main_4cycle();
 		}
-		// elseは処理無し
-		else
-		{
-		}
 	}
+
 	return;
 }
 
 // コンポの初期化
 void vdg_main_init(void)
 {
-	// 自モジュールのRAM初期化
+	//自モジュールのRAM初期化
 	u1s_main_InCnt = (U1)0;
 	u1s_main_Cn4Cycle = OFF;
 
-	// 他モジュールの初期化関数コール
+	//他モジュールの初期化関数コール
 	vdg_InLyr_init();
 	vdg_Prc_init();
 	vdg_OutLyr_init();
@@ -71,11 +68,12 @@ void vdg_main_init(void)
 	return;
 }
 
-// 定周期で処理を実行
+//定周期で処理を実行
 void vdg_main_4cycle(void)
 {
 	vdg_InLyr_GlobalCapture();
 	vdg_Prc_GridUpdate();
 	vdg_OutLyr_GlobalUpdate();
+	
 	return;
 }

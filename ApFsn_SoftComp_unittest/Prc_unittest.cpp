@@ -3,7 +3,7 @@
 #include "Prc.h"
 #include "Prc.cpp"
 
-//vdg_Prc_init()ï¿½Ìƒï¿½ï¿½jï¿½bï¿½gï¿½eï¿½Xï¿½g
+//vdg_Prc_init()‚Ìƒ†ƒjƒbƒgƒeƒXƒg
 TEST(TestCasePrcInit, PrcInit) {
 
 	stg_Prc_ArGridInfo[0][0].CnSnrDtct = 1;
@@ -19,10 +19,10 @@ TEST(TestCasePrcInit, PrcInit) {
 }
 
 
-//vdg_Prc_GridUpdate()ï¿½Ìƒï¿½ï¿½jï¿½bï¿½gï¿½eï¿½Xï¿½g
+//vdg_Prc_GridUpdate()‚Ìƒ†ƒjƒbƒgƒeƒXƒg
 // 
-// ï¿½Ô‚ÌŒï¿½ï¿½ï¿½É‚Â‚ï¿½ï¿½ï¿½
-// 2ï¿½Â‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‚ÌŠmï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
+// ŽÔ‚ÌŒã•û‚É‚Â‚¢‚Ä
+// 2‚Â‚ÌŒŸ’m‚ªd‚È‚Á‚Ä‚¢‚éA•¨‘Ì‚ÌŠm’èƒtƒ‰ƒO‚ ‚è
 TEST(TestCasePrcGU,MultiSnrPvm_ConfObj) {
 
 	st_snr_clstr* pst_workSnr[3];
@@ -35,7 +35,7 @@ TEST(TestCasePrcGU,MultiSnrPvm_ConfObj) {
 	{
 		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
 	}
-	//ï¿½\ï¿½iï¿½[ï¿½p
+	//ƒ\ƒi[—p
 	pst_workSnr[0]->st_crd[0].In_X = -700;
 	pst_workSnr[0]->st_crd[0].In_Y = -500;
 	pst_workSnr[0]->InCrdNum = 1;
@@ -45,7 +45,7 @@ TEST(TestCasePrcGU,MultiSnrPvm_ConfObj) {
 	pst_workSnr[1]->InCrdNum = 1;
 	pst_workSnr[1]->EmClstrState = 1;
 
-	//PVMï¿½p
+	//PVM—p
 	pst_workSod[0]->st_crd[0].In_X = -700;
 	pst_workSod[0]->st_crd[0].In_Y = -500;
 	pst_workSod[0]->InCrdNum = 1;
@@ -61,7 +61,7 @@ TEST(TestCasePrcGU,MultiSnrPvm_ConfObj) {
 	EXPECT_EQ(20, stg_Prc_ArGridInfo[0][300].InOcpy);
 	EXPECT_EQ(1, stg_Prc_ArGridInfo[0][300].CnObjSet);
 }
-// 2ï¿½Â‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½dï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‚ÌŠmï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½È‚ï¿½
+// 2‚Â‚ÌŒŸ’m‚ªd‚È‚Á‚Ä‚¢‚éA•¨‘Ì‚ÌŠm’èƒtƒ‰ƒO‚È‚µ
 TEST(TestCasePrcGU,MultiSnrPvm_NoConfObj) {
 	st_snr_clstr* pst_workSnr[3];
 	for (int i = 0; i < 3; i++)
@@ -73,12 +73,12 @@ TEST(TestCasePrcGU,MultiSnrPvm_NoConfObj) {
 	{
 		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
 	}
-
+	//ƒ\ƒi[—p
 	pst_workSnr[0]->st_crd[0].In_X = -200;
 	pst_workSnr[0]->st_crd[0].In_Y = -100;
 	pst_workSnr[0]->InCrdNum = 1;
 	pst_workSnr[0]->EmClstrState = 1;
-	//PVMï¿½p
+	//PVM—p
 	pst_workSod[0]->st_crd[0].In_X = -200;
 	pst_workSod[0]->st_crd[0].In_Y = -100;
 	pst_workSod[0]->InCrdNum = 1;
@@ -91,7 +91,7 @@ TEST(TestCasePrcGU,MultiSnrPvm_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][800].CnObjSet);
 }
 
-// ï¿½\ï¿½iï¿½[ï¿½Ì‚Ý‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‚ÌŠmï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
+// ƒ\ƒi[‚Ì‚Ý‚ÌŒŸ’m‚ª‚ ‚éA•¨‘Ì‚ÌŠm’èƒtƒ‰ƒO‚ ‚è
 TEST(TestCasePrcGU,SingleSnr_ConfObj) {
 	st_snr_clstr* pst_workSnr[3];
 	for (int i = 0; i < 3; i++)
@@ -120,7 +120,7 @@ TEST(TestCasePrcGU,SingleSnr_ConfObj) {
 	EXPECT_EQ(20, stg_Prc_ArGridInfo[100][100].InOcpy);
 	EXPECT_EQ(1, stg_Prc_ArGridInfo[100][100].CnObjSet);
 }
-// ï¿½\ï¿½iï¿½[ï¿½Ì‚Ý‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‚ÌŠmï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½È‚ï¿½
+// ƒ\ƒi[‚Ì‚Ý‚ÌŒŸ’m‚ª‚ ‚éA•¨‘Ì‚ÌŠm’èƒtƒ‰ƒO‚È‚µ
 TEST(TestCasePrcGU,SingleSnr_NoConfObj) {
 	st_snr_clstr* pst_workSnr[3];
 	for (int i = 0; i < 3; i++)
@@ -148,7 +148,7 @@ TEST(TestCasePrcGU,SingleSnr_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[900][0].CnObjSet);
 }
 
-// PVMï¿½Ì‚Ý‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‚ÌŠmï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½
+// PVM‚Ì‚Ý‚ÌŒŸ’m‚ª‚ ‚éA•¨‘Ì‚ÌŠm’èƒtƒ‰ƒO‚ ‚è
 TEST(TestCasePrcGU,SinglePvm_ConfObj) {
 	st_sod_clstr* pst_workSod[4];
 	for (int i = 0; i < 4; i++)
@@ -177,7 +177,7 @@ TEST(TestCasePrcGU,SinglePvm_ConfObj) {
 	EXPECT_EQ(20, stg_Prc_ArGridInfo[700][800].InOcpy);
 	EXPECT_EQ(1, stg_Prc_ArGridInfo[700][800].CnObjSet);
 }
-// PVMï¿½Ì‚Ý‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‚ÌŠmï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½È‚ï¿½
+// PVM‚Ì‚Ý‚ÌŒŸ’m‚ª‚ ‚éA•¨‘Ì‚ÌŠm’èƒtƒ‰ƒO‚È‚µ
 TEST(TestCasePrcGU,SinglePvm_NoConfObj) {
 	st_sod_clstr* pst_workSod[4];
 	for (int i = 0; i < 4; i++)
@@ -205,7 +205,7 @@ TEST(TestCasePrcGU,SinglePvm_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[900][100].CnObjSet);
 }
 
-// ï¿½ï¿½ï¿½mï¿½È‚ï¿½ï¿½Aï¿½ï¿½ï¿½Ì‚ÌŠmï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½È‚ï¿½
+// ŒŸ’m‚È‚µA•¨‘Ì‚ÌŠm’èƒtƒ‰ƒO‚È‚µ
 TEST(TestCasePrcGU,NoDetection_NoConfObj) {
 	st_snr_clstr* pst_workSnr[3];
 	for (int i = 0; i < 3; i++)
@@ -222,7 +222,7 @@ TEST(TestCasePrcGU,NoDetection_NoConfObj) {
 	pst_workSnr[0]->st_crd[0].In_Y = (S2)0;
 	pst_workSnr[0]->InCrdNum = 1;
 	pst_workSnr[0]->EmClstrState = (U1)0;
-	//PVMï¿½p
+	//PVM—p
 	pst_workSod[0]->st_crd[0].In_X = -500;
 	pst_workSod[0]->st_crd[0].In_Y = (S2)0;
 	pst_workSod[0]->InCrdNum = 1;
@@ -235,8 +235,8 @@ TEST(TestCasePrcGU,NoDetection_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][500].CnObjSet);
 }
 
-//ï¿½Ô‚Ì‘Oï¿½ï¿½ï¿½É‚Â‚ï¿½ï¿½ï¿½
-//2ï¿½Â‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½dï¿½È‚ï¿½
+//ŽÔ‚Ì‘O•û‚É‚Â‚¢‚Ä
+//2‚Â‚ÌŒŸ’m‚ªd‚È‚é
 TEST(TestCasePrcGU, FrontOfTheCar_MultSnrPvm_NoConfObj) {
 
 	st_snr_clstr* pst_workSnr[3];
@@ -249,13 +249,13 @@ TEST(TestCasePrcGU, FrontOfTheCar_MultSnrPvm_NoConfObj) {
 	{
 		pst_workSod[i] = &(stg_InLyr_SodDtctClstr[i]);
 	}
-	//ï¿½\ï¿½iï¿½[ï¿½p
+	//ƒ\ƒi[—p
 	pst_workSnr[0]->st_crd[0].In_X = 2000;
 	pst_workSnr[0]->st_crd[0].In_Y = (S2)0;
 	pst_workSnr[0]->InCrdNum = 2;
 	pst_workSnr[0]->EmClstrState = 1;
 
-	//PVMï¿½p
+	//PVM—p
 	pst_workSod[0]->st_crd[0].In_X = 2000;
 	pst_workSod[0]->st_crd[0].In_Y = (S2)0;
 	pst_workSod[0]->InCrdNum = 1;
@@ -268,7 +268,7 @@ TEST(TestCasePrcGU, FrontOfTheCar_MultSnrPvm_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[500][3000].CnObjSet);
 }
 
-// ï¿½\ï¿½iï¿½[ï¿½Ì‚Ý‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// ƒ\ƒi[‚Ì‚Ý‚ÌŒŸ’m‚ª‚ ‚é
 TEST(TestCasePrcGU, FrontOfTheCar_SingleSnr_NoConfObj) {
 	st_snr_clstr* pst_workSnr[3];
 	for (int i = 0; i < 3; i++)
@@ -288,7 +288,7 @@ TEST(TestCasePrcGU, FrontOfTheCar_SingleSnr_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[600][3000].CnObjSet);
 }
 
-// PVMï¿½Ì‚Ý‚ÌŒï¿½ï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// PVM‚Ì‚Ý‚ÌŒŸ’m‚ª‚ ‚é
 TEST(TestCasePrcGU, FrontOfTheCar_SingleSod_NoConfObj) {
 	st_sod_clstr* pst_workSod[4];
 	for (int i = 0; i < 4; i++)
@@ -308,7 +308,7 @@ TEST(TestCasePrcGU, FrontOfTheCar_SingleSod_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[700][3000].CnObjSet);
 }
 
-// ï¿½ï¿½ï¿½mï¿½È‚ï¿½
+// ŒŸ’m‚È‚µ
 TEST(TestCasePrcGU, FrontOfTheCar_NoDetection_NoConfObj) {
 	st_snr_clstr* pst_workSnr[3];
 	for (int i = 0; i < 3; i++)
@@ -325,7 +325,7 @@ TEST(TestCasePrcGU, FrontOfTheCar_NoDetection_NoConfObj) {
 	pst_workSnr[0]->st_crd[0].In_Y = -100;
 	pst_workSnr[0]->InCrdNum = 1;
 	pst_workSnr[0]->EmClstrState = (U1)0;
-	//PVMï¿½p
+	//PVM—p
 	pst_workSod[0]->st_crd[0].In_X = 2000;
 	pst_workSod[0]->st_crd[0].In_Y = -100;
 	pst_workSod[0]->InCrdNum = 1;
