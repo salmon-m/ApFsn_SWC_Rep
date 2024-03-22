@@ -36,8 +36,8 @@ void vdg_Prc_GridUpdate(void)
 	S1 s1t_PrcGU_SodCrdCount;
 	U2 u2t_PrcGU_LoopRow;
 	U2 u2t_PrcGU_LoopColumn;
-	S2 s2t_PrcGU_X = (S2)0;
-	S2 s2t_PrcGU_Y = (S2)0;
+	U2 u2t_PrcGU_X = (U2)0;
+	U2 u2t_PrcGU_Y = (U2)0;
 
 	// É\ÉiÅ[
 	for (s1t_PrcGU_SnrClusterCount = (S1)0; s1t_PrcGU_SnrClusterCount < (S1)3; s1t_PrcGU_SnrClusterCount++)
@@ -46,14 +46,14 @@ void vdg_Prc_GridUpdate(void)
 		{
 			if (stg_InLyr_SnrDtctClstr[s1t_PrcGU_SnrClusterCount].EmClstrState == (U1)1)
 			{
-				s2t_PrcGU_X = stg_InLyr_SnrDtctClstr[s1t_PrcGU_SnrClusterCount].st_crd[s1t_PrcGU_SnrCrdCount].In_X + (S2)1000;
-				s2t_PrcGU_Y = stg_InLyr_SnrDtctClstr[s1t_PrcGU_SnrClusterCount].st_crd[s1t_PrcGU_SnrCrdCount].In_Y + (S2)500;
-				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].CnSnrDtct = (U1)1;
-				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy + (U1)5;
+				u2t_PrcGU_X = stg_InLyr_SnrDtctClstr[s1t_PrcGU_SnrClusterCount].st_crd[s1t_PrcGU_SnrCrdCount].In_X + (U2)1000;
+				u2t_PrcGU_Y = stg_InLyr_SnrDtctClstr[s1t_PrcGU_SnrClusterCount].st_crd[s1t_PrcGU_SnrCrdCount].In_Y + (U2)500;
+				stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].CnSnrDtct = (U1)1;
+				stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy = stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy + (U1)5;
 				//ñOòaÉKÅ[Éh
-				if (stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy > 250) 
+				if (stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy > (U1)250) 
 				{
-					stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = 250;
+					stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy = (U1)250;
 				}
 			}
 		}
@@ -66,14 +66,14 @@ void vdg_Prc_GridUpdate(void)
 		{
 			if (stg_InLyr_SodDtctClstr[s1t_PrcGU_SodClusterCount].EmClstrState == (U1)1)
 			{
-				s2t_PrcGU_X = stg_InLyr_SodDtctClstr[s1t_PrcGU_SodClusterCount].st_crd[s1t_PrcGU_SodCrdCount].In_X + (S2)1000;
-				s2t_PrcGU_Y = stg_InLyr_SodDtctClstr[s1t_PrcGU_SodClusterCount].st_crd[s1t_PrcGU_SodCrdCount].In_Y + (S2)500;
-				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].CnSodDtct = (U1)1;
-				stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy + (U1)5;
+				u2t_PrcGU_X = stg_InLyr_SodDtctClstr[s1t_PrcGU_SodClusterCount].st_crd[s1t_PrcGU_SodCrdCount].In_X + (U2)1000;
+				u2t_PrcGU_Y = stg_InLyr_SodDtctClstr[s1t_PrcGU_SodClusterCount].st_crd[s1t_PrcGU_SodCrdCount].In_Y + (U2)500;
+				stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].CnSodDtct = (U1)1;
+				stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy = stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy + (U1)5;
 				//ñOòaÉKÅ[Éh
-				if (stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy > 250)
+				if (stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy > (U1)250)
 				{
-					stg_Prc_ArGridInfo[s2t_PrcGU_Y][s2t_PrcGU_X].InOcpy = 250;
+					stg_Prc_ArGridInfo[u2t_PrcGU_Y][u2t_PrcGU_X].InOcpy = (U1)250;
 				}
 			}
 		}
