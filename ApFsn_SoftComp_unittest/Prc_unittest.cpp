@@ -337,3 +337,43 @@ TEST(TestCasePrcGU, FrontOfTheCar_NoDetection_NoConfObj) {
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][3000].InOcpy);
 	EXPECT_EQ(0, stg_Prc_ArGridInfo[400][3000].CnObjSet);
 }
+
+//物体確定1つもなし
+TEST(TestCasePrcSO, GridMap_NoConfObj) {
+
+	static st_GridMap* psts_GridMapInfo[1000][4000];
+	
+	for (U2 u2t_row = 0; u2t_row < 1000; u2t_row++)
+	{
+		for (U2 u2t_column = 0; u2t_column < 4000; u2t_column++)
+		{
+			psts_GridMapInfo[u2t_row][u2t_column] = &stg_Prc_ArGridInfo[u2t_row][u2t_column];
+		}
+	}
+	
+	psts_GridMapInfo[200][300]->InOcpy = (U1)15;
+
+	vds_Prc_SetObj(psts_GridMapInfo);
+	EXPECT_EQ(15, stg_Prc_ArGridInfo[200][300].InOcpy);
+	EXPECT_EQ(0, stg_Prc_ArGridInfo[200][300].CnObjSet);
+}
+
+//vds_Prc_SetObj()のユニットテスト
+TEST(TestCasePrcSO, GridMap_ConfObj) {
+
+	static st_GridMap *psts_GridMapInfo[1000][4000];
+
+	for (U2 u2t_row = 0; u2t_row < 1000; u2t_row++)
+	{
+		for (U2 u2t_column = 0; u2t_column < 4000; u2t_column++)
+		{
+			psts_GridMapInfo[u2t_row][u2t_column] = &stg_Prc_ArGridInfo[u2t_row][u2t_column];
+		}
+	}
+
+	psts_GridMapInfo[200][300]->InOcpy = (U1)20;
+
+	vds_Prc_SetObj(psts_GridMapInfo);
+	EXPECT_EQ(20, stg_Prc_ArGridInfo[200][300].InOcpy);
+	EXPECT_EQ(1, stg_Prc_ArGridInfo[200][300].CnObjSet);
+}
