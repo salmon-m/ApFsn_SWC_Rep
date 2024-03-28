@@ -5,7 +5,7 @@
 // プロトタイプ宣言
 void vdg_Prc_init(void);
 void vdg_Prc_GridUpdate(void);
-void vds_Prc_SetObj(st_GridMap (*psts_PrcSO_GridMapInfo)[1000]);
+void vds_Prc_SetObj(st_GridMap (*psts_PrcSO_GridMapInfo)[4000]);
 
 st_GridMap stg_Prc_ArGridInfo[1000][4000]; // グリッドマップ情報
 
@@ -98,7 +98,7 @@ void vdg_Prc_GridUpdate(void)
 	return;
 }
 
-void vds_Prc_SetObj(st_GridMap (*psts_PrcSO_GridMapInfo)[1000])
+void vds_Prc_SetObj(st_GridMap (*psts_PrcSO_GridMapInfo)[4000])
 {
 	U2 u2t_PrcGU_LoopRow;
 	U2 u2t_PrcGU_LoopColumn;
@@ -107,9 +107,9 @@ void vds_Prc_SetObj(st_GridMap (*psts_PrcSO_GridMapInfo)[1000])
 	{
 		for (u2t_PrcGU_LoopColumn = (U2)0; u2t_PrcGU_LoopColumn < (U2)4000; u2t_PrcGU_LoopColumn++)
 		{
-			if (psts_PrcSO_GridMapInfo[u2t_PrcGU_LoopRow][u2t_PrcGU_LoopColumn]->InOcpy >= (U1)16)
+			if (psts_PrcSO_GridMapInfo[u2t_PrcGU_LoopRow][u2t_PrcGU_LoopColumn].InOcpy >= (U1)16)
 			{
-				psts_PrcSO_GridMapInfo[u2t_PrcGU_LoopRow][u2t_PrcGU_LoopColumn]->CnObjSet = (U1)1;
+				psts_PrcSO_GridMapInfo[u2t_PrcGU_LoopRow][u2t_PrcGU_LoopColumn].CnObjSet = (U1)1;
 			}
 		}
 	}
