@@ -5,11 +5,9 @@
 // プロトタイプ宣言
 void vdg_Prc_init(void);
 void vdg_Prc_GridUpdate(void);
-void vds_Prc_SetObj(st_GridMap *psts_PrcSO_GridMapInfo[1000][4000]);
+void vds_Prc_SetObj(st_GridMap (*psts_PrcSO_GridMapInfo)[1000]);
 
 st_GridMap stg_Prc_ArGridInfo[1000][4000]; // グリッドマップ情報
-
-st_GridMap *psts_PrcSO_ArGridInfo[1000][4000]; // グリッドマップ情報のポインタ
 
 // 初期化
 void vdg_Prc_init(void)
@@ -25,8 +23,6 @@ void vdg_Prc_init(void)
 			stg_Prc_ArGridInfo[u2t_PrcI_LoopRow][u2t_PrcI_LoopColumn].CnSodDtct = (U1)0;
 			stg_Prc_ArGridInfo[u2t_PrcI_LoopRow][u2t_PrcI_LoopColumn].InOcpy = (U1)0;
 			stg_Prc_ArGridInfo[u2t_PrcI_LoopRow][u2t_PrcI_LoopColumn].CnObjSet = (U1)0;
-
-			psts_PrcSO_ArGridInfo[u2t_PrcI_LoopRow][u2t_PrcI_LoopColumn] = &stg_Prc_ArGridInfo[u2t_PrcI_LoopRow][u2t_PrcI_LoopColumn];
 		}
 	}
 
@@ -97,12 +93,12 @@ void vdg_Prc_GridUpdate(void)
 	}
 
 	// 物体確定
-	vds_Prc_SetObj(psts_PrcSO_ArGridInfo);
+	vds_Prc_SetObj(&(stg_Prc_ArGridInfo[0]));
 
 	return;
 }
 
-void vds_Prc_SetObj(st_GridMap *psts_PrcSO_GridMapInfo[1000][4000])
+void vds_Prc_SetObj(st_GridMap (*psts_PrcSO_GridMapInfo)[1000])
 {
 	U2 u2t_PrcGU_LoopRow;
 	U2 u2t_PrcGU_LoopColumn;
